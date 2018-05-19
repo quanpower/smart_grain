@@ -23,6 +23,26 @@ const menuData = [
     ],
   },
   {
+    name: 'grain',
+    icon: 'form',
+    path: 'grain',
+    children: [
+      {
+        name: 'index',
+        path: 'index',
+      },
+      {
+        name: '分步表单',
+        path: 'step-form',
+      },
+      {
+        name: '高级表单',
+        authority: 'admin',
+        path: 'advanced-form',
+      },
+    ],
+  },
+  {
     name: '表单页',
     icon: 'form',
     path: 'form',

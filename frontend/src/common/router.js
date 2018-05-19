@@ -86,6 +86,17 @@ export const getRouterData = app => {
       // name: '工作台',
       // authority: 'admin',
     },
+
+
+    '/grain/index': {
+      component: dynamicWrapper(app, ['grain'], () =>
+        import('../routes/Grain/index')
+      ),
+      // hideInBreadcrumb: true,
+      // name: '工作台',
+      // authority: 'admin',
+    },
+
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },

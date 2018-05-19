@@ -1,62 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import {
-  Row,
-  Col,
-  Icon,
-  Card,
-  Tabs,
-  Table,
-  Radio,
-  DatePicker,
-  Tooltip,
-  Menu,
-  Dropdown,
-} from 'antd';
-import numeral from 'numeral';
-import {
-  ChartCard,
-  yuan,
-  MiniArea,
-  MiniBar,
-  MiniProgress,
-  Field,
-  Bar,
-  Pie,
-  TimelineChart,
-} from 'components/Charts';
-import Trend from 'components/Trend';
-import NumberInfo from 'components/NumberInfo';
-import { getTimeDistance } from '../../utils/utils';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Legend} from 'recharts';
-// import ReactEcharts from 'echarts-for-react';
+import { Row, Col, Card } from 'antd';
+import { StoreHouse, AudioAlarm } from './components'
+import styles from './index.less'
 
-import styles from './Analysis.less';
-
-const { TabPane } = Tabs;
-const { RangePicker } = DatePicker;
-
-const rankingListData = [];
-for (let i = 0; i < 7; i += 1) {
-  rankingListData.push({
-    title: `工专路 ${i} 号店`,
-    total: 323234,
-  });
+const bodyStyle = {
+  bodyStyle: {
+    height: 432,
+    background: '#fff',
+  },
 }
 
-const Yuan = ({ children }) => (
-  <span dangerouslySetInnerHTML={{ __html: yuan(children) }} /> /* eslint-disable-line react/no-danger */
-);
 
-
-
-
-@connect(({ survey, loading }) => ({
-  survey,
-  loading: loading.effects['survey/fetch'],
+@connect(({ grain, loading }) => ({
+  grain,
+  loading: loading.effects['grain/fetchBarns'],
 }))
 
-export default class Analysis extends Component {
+export default class Barns extends Component {
   state = {
     salesType: 'all',
     currentTabKey: '',
@@ -65,16 +26,13 @@ export default class Analysis extends Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'survey/fetchCurrentPowerData',
+      type: 'grain/fetchBarns',
     });
 
     this.props.dispatch({
-      type: 'survey/fetchTemperatureData',
+      type: 'grain/fetchAlarmStatus',
     });
 
-    this.props.dispatch({
-      type: 'survey/fetchTemperatureHistory',
-    });
 
     console.log('component did mount!')
   }
@@ -82,7 +40,7 @@ export default class Analysis extends Component {
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'survey/clear',
+      type: 'grain/clear',
     });
   }
 
@@ -104,7 +62,7 @@ export default class Analysis extends Component {
     });
 
     this.props.dispatch({
-      type: 'survey/fetchTemperatureHistory',
+      type: 'grain/fetchTemperatureHistory',
     });
   };
 

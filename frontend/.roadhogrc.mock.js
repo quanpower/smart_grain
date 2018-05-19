@@ -67,6 +67,13 @@ const proxy = {
   'GET /api/tags': mockjs.mock({
     'list|100': [{ name: '@city', 'value|1-100': 150, 'type|0-2': 1 }],
   }),
+
+
+
+  'GET /api/barns': {"barns": [{"number": 18.9, "title": "37\u53f7\u4ed3", "barnNo": "1", "color": "#64ea91", "icon": "home"}, {"number": 16.8, "title": "34\u53f7\u4ed3", "barnNo": "2", "color": "#64ea91", "icon": "home"}, {"number": 17.6, "title": "41\u53f7\u4ed3", "barnNo": "3", "color": "#64ea91", "icon": "home"}, {"number": 22.7, "title": "11\u53f7\u4ed3", "barnNo": "4", "color": "#64ea91", "icon": "home"}]},
+
+  'GET /api/alarm_status':{'alarmStatus': false},
+
   'GET /api/fake_list': getFakeList,
   'GET /api/fake_chart_data': getFakeChartData,
   'GET /api/profile/basic': getProfileBasicData,
