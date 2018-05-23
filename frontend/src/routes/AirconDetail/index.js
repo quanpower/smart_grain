@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react';
 import { routerRedux } from 'dva/router'
 
 import { connect } from 'dva'
@@ -8,7 +7,6 @@ import { color } from 'utils'
 import { Loader } from 'components'
 import { AirConRealtimeTemp, AirConTemps, AirConTempRecord } from './components'
 import styles from './index.less'
-// import TempRecordList from "./components/temprecord";
 
 
 const bodyStyle = {
@@ -19,53 +17,61 @@ const bodyStyle = {
 }
 
 
-function AirConDetail ({ aircondetail, dispatch }) {
-  const { barnsNodesOptions, airConRealtimeTemp, airConTemps, airConTempRecord } = aircondetail
+@connect(({ aircondetail, loading }) => ({
+  aircondetail,
+  loading: loading.effects['aircondetail/fetchBarns'],
+}))
 
-  const options = barnsNodesOptions
 
-  console.log('----barnsNodesOptions is:------', options)
+export default class AirConDetail extends Component {
+  state = {
+    barns: 'all',
+  };
 
-  function onChange (value) {
-    console.log('------select value is:--------')
-    console.log(value)
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'aircondetail/fetchBarns',
+    });
 
-    // dispatch({
-    //   type: 'aircondetail/fetchGatewayAddr',
-    //   payload: {
-    //     gatewayAddr: value[0],
-    //   },
-    // })
+    this.props.dispatch({
+      type: 'aircondetail/fetchAlarmStatus',
+    });
 
-    // dispatch({
-    //   type: 'aircondetail/fetchBarnNo',
-    //   payload: {
-    //     barnNo: value[1],
-    //   },
-    // })
 
-    // dispatch({
-    //   type: 'aircondetail/fetchNodeAddr',
-    //   payload: {
-    //     nodeAddr: value[2],
-    //   },
-    // })
+    console.log('component did mount!')
+  }
 
-    const nodeAddr = value[2]
-    dispatch(routerRedux.push(`/aircondetail/${nodeAddr}`))
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'aircondetail/clear',
+    });
   }
 
 
-  const concCards = airConRealtimeTemp.map((item, key) => (<Col key={key} lg={6} md={12}>
+  render() {
+    const { barns_state } = this.state;
+    const { aircondetail, loading } = this.props;
+    const { barnsNodesOptions, airConRealtimeTemp, airConTemps, airConTempRecord } = airconStartEndTime
+    const options = barnsNodesOptions
+
+    console.log('----barnsNodesOptions is:------', options)
+
+    function onChange (value) {
+      console.log('------select value is:--------')
+      console.log(value)
+      const nodeAddr = value[2]
+    dispatch(routerRedux.push(`/aircondetail/${nodeAddr}`))
+  }
+
+    const concCards = airConRealtimeTemp.map((item, key) => (<Col key={key} lg={6} md={12}>
     <AirConRealtimeTemp {...item} />
   </Col>))
 
-  return (
-    <div>
-      {/*<Loader spinning={loading.models.dashboard} />*/}
-      <Row gutter={24}>
-
-        <Col lg={24} md={24}>
+    return (
+      <Fragment>
+        <Row gutter={24}>
+                  <Col lg={24} md={24}>
           <Card bordered={false}
             bodyStyle={{
               padding: '24px 36px 24px 0',
@@ -96,18 +102,9 @@ function AirConDetail ({ aircondetail, dispatch }) {
             <AirConTempRecord airConTempRecord={airConTempRecord} />
           </Card>
         </Col>
-
-      </Row>
-    </div>
-  )
+        </Row>
+      </Fragment>
+    );
+  }
 }
-
-AirConDetail.propTypes = {
-  aircondetail: PropTypes.object,
-  dispatch: PropTypes.func,
-}
-
-export default connect(({ aircondetail }) => ({ aircondetail }))(AirConDetail)
-
-
 

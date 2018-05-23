@@ -1,29 +1,55 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react';
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 
 import { AirconUpdateStartEndTime } from './components'
 
-const AirConStartEndTime = ({ location, dispatch, airconStartEndTime, loading }) => {
-  const { startTime, endTime } = airconStartEndTime
 
-  console.log('---start time is---:',startTime)
+@connect(({ airconStartEndTime, loading }) => ({
+  airconStartEndTime,
+  loading: loading.effects['airconStartEndTime/fetchBarns'],
+}))
 
-  return (
-    <div className="content-inner">
 
-      <AirconUpdateStartEndTime dispatch={dispatch} location={location} airconStartEndTime={airconStartEndTime} />
+export default class AirConStartEndTime extends Component {
+  state = {
+    barns: 'all',
+  };
 
-    </div>
-  )
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'airconStartEndTime/fetchBarns',
+    });
+
+    this.props.dispatch({
+      type: 'airconStartEndTime/fetchAlarmStatus',
+    });
+
+
+    console.log('component did mount!')
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'airconStartEndTime/clear',
+    });
+  }
+
+  
+
+  render() {
+    const { barns_state } = this.state;
+    const { airconStartEndTime, loading } = this.props;
+    const { startTime, endTime } = airconStartEndTime
+
+    return (
+      <Fragment>
+        <Row gutter={24}>
+          <AirconUpdateStartEndTime dispatch={dispatch} location={location} airconStartEndTime={airconStartEndTime} />
+        </Row>
+      </Fragment>
+    );
+  }
 }
 
-AirConStartEndTime.propTypes = {
-  airconStartEndTime: PropTypes.object,
-  location: PropTypes.object,
-  dispatch: PropTypes.func,
-  loading: PropTypes.object,
-}
-
-export default connect(({ airconStartEndTime, loading }) => ({ airconStartEndTime, loading }))(AirConStartEndTime)

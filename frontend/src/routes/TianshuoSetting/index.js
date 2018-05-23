@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react';
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 
@@ -19,11 +18,6 @@ const AirConStartEndTime = ({ location, dispatch, airconStartEndTime, loading })
   )
 }
 
-AirConStartEndTime.propTypes = {
-  airconStartEndTime: PropTypes.object,
-  location: PropTypes.object,
-  dispatch: PropTypes.func,
-  loading: PropTypes.object,
-}
+
 
 export default connect(({ airconStartEndTime, loading }) => ({ airconStartEndTime, loading }))(AirConStartEndTime)
