@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { Row, Col, Card } from 'antd'
 import { StoreHouse, AudioAlarm } from './components'
@@ -20,10 +19,11 @@ const bodyStyle = {
   loading: loading.effects['grain/fetchBarns'],
 }))
 
+
+
 export default class Barns extends Component {
   state = {
     barns: 'all',
-
   };
 
   componentDidMount() {

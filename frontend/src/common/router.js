@@ -92,11 +92,17 @@ export const getRouterData = app => {
       component: dynamicWrapper(app, ['grain'], () =>
         import('../routes/Grain/index')
       ),
-      // hideInBreadcrumb: true,
-      // name: '工作台',
-      // authority: 'admin',
     },
-
+    '/grain/dash': {
+      component: dynamicWrapper(app, ['graindash'], () =>
+        import('../routes/GrainDash/index')
+      ),
+    },
+    '/grain/fire-alarm': {
+      component: dynamicWrapper(app, ['fireAlarm'], () =>
+        import('../routes/FireAlarm/index')
+      ),
+    },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },

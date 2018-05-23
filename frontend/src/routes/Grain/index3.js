@@ -21,6 +21,7 @@ function Grain ({ grain, dispatch }) {
   const barnCards = barns.map((item, key) => (<Col key={key} lg={6} md={12}>
     <StoreHouse {...item} />
   </Col>))
+  
   return (
     <div>
       {/*<Loader spinning={loading.models.dashboard} />*/}
