@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva'
 import { Card, Row, Col } from 'antd'
-import { color } from 'utils'
+import { color } from 'utils/utils'
 import styles from './index.less'
 import { OnOffControl } from './components'
 
@@ -15,7 +15,7 @@ const bodyStyle = {
 
 @connect(({ tianshuoOnOff, loading }) => ({
   tianshuoOnOff,
-  loading: loading.effects['tianshuoOnOff/fetchBarnsOptions'],
+  loading: loading.effects['tianshuoOnOff/updateTianshuoOnOff'],
 }))
 
 
@@ -48,14 +48,13 @@ export default class TianshuoOnOffControl extends Component {
 
   render() {
     const { barns_state } = this.state;
-    const { tianshuoOnOff, loading } = this.props;
+    const { tianshuoOnOff, dispatch, loading } = this.props;
     const { list, pagination } = tianshuoOnOff
 
 
     const listProps = {
       pagination,
       dataSource: list,
-      loading: loading.effects['grainhistory/query'],
       onChange (page) {
         dispatch(routerRedux.push({
           pathname,

@@ -3,7 +3,7 @@ import { getNodeAddrByBarnNo, getAllNodes, getAllBarns } from '../services/grain
 import * as airConControlService from '../services/airconcontrols'
 
 export default {
-  namespace: 'airconcontrol',
+  namespace: 'airconControl',
 
   state: {
     gatewayAddr: 1,

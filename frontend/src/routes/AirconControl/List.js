@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, Modal } from 'antd'
 import classnames from 'classnames'
-import { DropOption } from 'components'
+import DropOption from 'components/DropOption'
 import { Link } from 'dva/router'
-import AnimTableBody from '../../components/DataTable/AnimTableBody'
+import AnimTableBody from 'components/DataTable/AnimTableBody'
 import styles from './List.less'
 
 const confirm = Modal.confirm

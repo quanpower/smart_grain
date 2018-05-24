@@ -25,7 +25,7 @@ Date.prototype.Format = function(format){
 
 
 export default {
-  namespace: 'aircondetail',
+  namespace: 'airconDetail',
 
   state: {
     gatewayAddr: 1,

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva'
-import { Tabs } from 'antd'
+import { Row, Tabs } from 'antd'
 import { routerRedux } from 'dva/router'
 import List from './List'
 
@@ -54,7 +54,6 @@ export default class GrainHistory extends Component {
     const listProps = {
       pagination,
       dataSource: list,
-      loading: loading.effects['grainhistory/query'],
       onChange (page) {
         dispatch(routerRedux.push({
           pathname,

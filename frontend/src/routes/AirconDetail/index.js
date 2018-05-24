@@ -3,8 +3,8 @@ import { routerRedux } from 'dva/router'
 
 import { connect } from 'dva'
 import { Row, Col, Card, Cascader } from 'antd'
-import { color } from 'utils'
-import { Loader } from 'components'
+import { color } from 'utils/utils'
+import { Loader } from 'components/Loader'
 import { AirConRealtimeTemp, AirConTemps, AirConTempRecord } from './components'
 import styles from './index.less'
 
@@ -17,9 +17,9 @@ const bodyStyle = {
 }
 
 
-@connect(({ aircondetail, loading }) => ({
-  aircondetail,
-  loading: loading.effects['aircondetail/fetchBarns'],
+@connect(({ airconDetail, loading }) => ({
+  airconDetail,
+  loading: loading.effects['airconDetail/fetchBarns'],
 }))
 
 
@@ -30,11 +30,11 @@ export default class AirConDetail extends Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'aircondetail/fetchBarns',
+      type: 'airconDetail/fetchBarns',
     });
 
     this.props.dispatch({
-      type: 'aircondetail/fetchAlarmStatus',
+      type: 'airconDetail/fetchAlarmStatus',
     });
 
 
@@ -44,15 +44,15 @@ export default class AirConDetail extends Component {
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'aircondetail/clear',
+      type: 'airconDetail/clear',
     });
   }
 
 
   render() {
     const { barns_state } = this.state;
-    const { aircondetail, loading } = this.props;
-    const { barnsNodesOptions, airConRealtimeTemp, airConTemps, airConTempRecord } = airconStartEndTime
+    const { airconDetail, dispatch, loading } = this.props;
+    const { barnsNodesOptions, airConRealtimeTemp, airConTemps, airConTempRecord } = airconDetail
     const options = barnsNodesOptions
 
     console.log('----barnsNodesOptions is:------', options)
@@ -61,7 +61,7 @@ export default class AirConDetail extends Component {
       console.log('------select value is:--------')
       console.log(value)
       const nodeAddr = value[2]
-    dispatch(routerRedux.push(`/aircondetail/${nodeAddr}`))
+    dispatch(routerRedux.push(`/airconDetail/${nodeAddr}`))
   }
 
     const concCards = airConRealtimeTemp.map((item, key) => (<Col key={key} lg={6} md={12}>

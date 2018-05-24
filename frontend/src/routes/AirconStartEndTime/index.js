@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-
+import { Row } from 'antd'
 import { AirconUpdateStartEndTime } from './components'
 
 
@@ -40,7 +40,7 @@ export default class AirConStartEndTime extends Component {
 
   render() {
     const { barns_state } = this.state;
-    const { airconStartEndTime, loading } = this.props;
+    const { airconStartEndTime, dispatch, loading } = this.props;
     const { startTime, endTime } = airconStartEndTime
 
     return (

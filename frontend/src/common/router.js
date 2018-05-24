@@ -93,42 +93,42 @@ export const getRouterData = app => {
         import('../routes/Grain/index')
       ),
     },
-    '/grain/graindash': {
-      component: dynamicWrapper(app, ['graindash'], () =>
+    '/grain/grain-dash': {
+      component: dynamicWrapper(app, ['grainDash'], () =>
         import('../routes/GrainDash/index')
       ),
     },
-    '/grain/fireAlarm': {
+    '/grain/fire-alarm': {
       component: dynamicWrapper(app, ['fireAlarm'], () =>
         import('../routes/FireAlarm/index')
       ),
     },
-    '/grain/airconControl': {
-      component: dynamicWrapper(app, ['airconcontrol'], () =>
+    '/grain/aircon-control': {
+      component: dynamicWrapper(app, ['airconControl'], () =>
         import('../routes/AirconControl/index')
       ),
     },
-        '/grain/aircondetail': {
-      component: dynamicWrapper(app, ['aircondetail'], () =>
+        '/grain/aircon-detail': {
+      component: dynamicWrapper(app, ['airconDetail'], () =>
         import('../routes/AirconDetail/index')
       ),
     },
-        '/grain/airconStartEndTime': {
+        '/grain/aircon-start-end-time': {
       component: dynamicWrapper(app, ['airconStartEndTime'], () =>
         import('../routes/AirconStartEndTime/index')
       ),
     },
-        '/grain/grainhistory': {
-      component: dynamicWrapper(app, ['grainhistory'], () =>
+        '/grain/grain-history': {
+      component: dynamicWrapper(app, ['grainHistory'], () =>
         import('../routes/GrainHistory/index')
       ),
     },
-        '/grain/tianshuoOnOff': {
+        '/grain/tianshuo-on-off': {
       component: dynamicWrapper(app, ['tianshuoOnOff'], () =>
         import('../routes/TianshuoOnOff/index')
       ),
     },
-        '/grain/tianshuoSetting': {
+        '/grain/tianshuo-setting': {
       component: dynamicWrapper(app, ['tianshuoSetting'], () =>
         import('../routes/TianshuoSetting/index')
       ),

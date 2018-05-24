@@ -33,35 +33,35 @@ const menuData = [
       },
       {
         name: 'graindash',
-        path: 'graindash',
+        path: 'grain-dash',
       },
       {
         name: 'fireAlarm',
-        path: 'fireAlarm',
+        path: 'fire-alarm',
       },
       {
         name: 'airconControl',
-        path: 'airconControl',
+        path: 'aircon-control',
       },
       {
         name: 'aircondetail',
-        path: 'aircondetail',
+        path: 'aircon-detail',
       },
       {
         name: 'airconStartEndTime',
-        path: 'airconStartEndTime',
+        path: 'aircon-start-end-time',
       },
       {
         name: 'grainhistory',
-        path: 'grainhistory',
+        path: 'grain-history',
       },
       {
         name: 'tianshuoOnOff',
-        path: 'tianshuoOnOff',
+        path: 'tianshuo-on-off',
       },
       {
         name: 'tianshuoSetting',
-        path: 'tianshuoSetting',
+        path: 'tianshuo-setting',
       },
 
       {

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 import { Row, Col, Card, Select, message, Cascader} from 'antd'
-import { color } from 'utils'
+import { color } from 'utils/utils'
 import { AirConDashboard, AirconBlockItem } from './components'
 import styles from './index.less'
 import pathToRegexp from 'path-to-regexp'
@@ -16,9 +16,9 @@ const bodyStyle = {
 }
 
 
-@connect(({ graindash, loading }) => ({
-  graindash,
-  loading: loading.effects['graindash/fetchBarnsOptions'],
+@connect(({ grainDash, loading }) => ({
+  grainDash,
+  loading: loading.effects['grainDash/fetchBarnsOptions'],
 }))
 
 
@@ -29,11 +29,11 @@ export default class GrainDash extends Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'graindash/fetchBarns',
+      type: 'grainDash/fetchBarns',
     });
 
     this.props.dispatch({
-      type: 'graindash/fetchAlarmStatus',
+      type: 'grainDash/fetchAlarmStatus',
     });
 
 
@@ -43,7 +43,7 @@ export default class GrainDash extends Component {
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'graindash/clear',
+      type: 'grainDash/clear',
     });
   }
 
@@ -51,8 +51,8 @@ export default class GrainDash extends Component {
 
   render() {
     const { barns_state } = this.state;
-    const { graindash, loading } = this.props;
-    const { barnNo, barnsOptions, airConDash, airconBlockItems } = graindash
+    const { grainDash, loading } = this.props;
+    const { barnNo, barnsOptions, airConDash, airconBlockItems } = grainDash
 
     console.log('airConDash is: ', airConDash)
     console.log('--****-barnNo is: ---****--', barnNo)

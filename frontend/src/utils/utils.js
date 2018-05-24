@@ -160,7 +160,8 @@ export function isUrl(path) {
   return reg.test(path);
 }
 
-const colors = {
+
+export const color = {
     green: '#64ea91',
     blue: '#8fc9fb',
     purple: '#d897eb',
@@ -172,9 +173,3 @@ const colors = {
     grass: '#d6fbb5',
     sky: '#c1e0fc',
   };
-
-export function color() {
-  return {
-    color: colors,
-  };
-}

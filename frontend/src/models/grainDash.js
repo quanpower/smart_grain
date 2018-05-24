@@ -3,7 +3,7 @@ import { getNodeAddrByBarnNo, getAllBarns, getAirConDashboard, getAirconBlockIte
 
 
 export default {
-  namespace: 'graindash',
+  namespace: 'grainDash',
 
   state: {
     gatewayAddr: 1,

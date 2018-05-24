@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Card } from 'antd'
-import { color } from 'utils'
+import { color } from 'utils/utils'
 import styles from './airconControlManual.less'
 import AirconOnOffControl from './airconOnOffControl'
 import AirconOnOffAllOneKey from './airconOnOffAllOneKey'

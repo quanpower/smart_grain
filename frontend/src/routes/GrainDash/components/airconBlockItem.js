@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { routerRedux, Link } from 'dva/router'
 import { Row, Col, Card} from 'antd'
-import { color } from 'utils'
+import { color } from 'utils/utils'
 
 import styles from './airconBlockItem.less'
 
