@@ -88,19 +88,49 @@ export const getRouterData = app => {
     },
 
 
-    '/grain/index': {
+    '/grain/grain': {
       component: dynamicWrapper(app, ['grain'], () =>
         import('../routes/Grain/index')
       ),
     },
-    '/grain/dash': {
+    '/grain/graindash': {
       component: dynamicWrapper(app, ['graindash'], () =>
         import('../routes/GrainDash/index')
       ),
     },
-    '/grain/fire-alarm': {
+    '/grain/fireAlarm': {
       component: dynamicWrapper(app, ['fireAlarm'], () =>
         import('../routes/FireAlarm/index')
+      ),
+    },
+    '/grain/airconControl': {
+      component: dynamicWrapper(app, ['airconcontrol'], () =>
+        import('../routes/AirconControl/index')
+      ),
+    },
+        '/grain/aircondetail': {
+      component: dynamicWrapper(app, ['aircondetail'], () =>
+        import('../routes/AirconDetail/index')
+      ),
+    },
+        '/grain/airconStartEndTime': {
+      component: dynamicWrapper(app, ['airconStartEndTime'], () =>
+        import('../routes/AirconStartEndTime/index')
+      ),
+    },
+        '/grain/grainhistory': {
+      component: dynamicWrapper(app, ['grainhistory'], () =>
+        import('../routes/GrainHistory/index')
+      ),
+    },
+        '/grain/tianshuoOnOff': {
+      component: dynamicWrapper(app, ['tianshuoOnOff'], () =>
+        import('../routes/TianshuoOnOff/index')
+      ),
+    },
+        '/grain/tianshuoSetting': {
+      component: dynamicWrapper(app, ['tianshuoSetting'], () =>
+        import('../routes/TianshuoSetting/index')
       ),
     },
     '/form/basic-form': {

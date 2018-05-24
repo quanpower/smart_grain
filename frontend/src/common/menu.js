@@ -29,8 +29,41 @@ const menuData = [
     children: [
       {
         name: 'index',
-        path: 'index',
+        path: 'grain',
       },
+      {
+        name: 'graindash',
+        path: 'graindash',
+      },
+      {
+        name: 'fireAlarm',
+        path: 'fireAlarm',
+      },
+      {
+        name: 'airconControl',
+        path: 'airconControl',
+      },
+      {
+        name: 'aircondetail',
+        path: 'aircondetail',
+      },
+      {
+        name: 'airconStartEndTime',
+        path: 'airconStartEndTime',
+      },
+      {
+        name: 'grainhistory',
+        path: 'grainhistory',
+      },
+      {
+        name: 'tianshuoOnOff',
+        path: 'tianshuoOnOff',
+      },
+      {
+        name: 'tianshuoSetting',
+        path: 'tianshuoSetting',
+      },
+
       {
         name: '分步表单',
         path: 'step-form',
