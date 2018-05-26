@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ef0102dd2b20
+Revision ID: 47301c64b754
 Revises: 
-Create Date: 2017-12-16 10:44:42.048636
+Create Date: 2018-05-25 14:59:38.180062
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ef0102dd2b20'
+revision = '47301c64b754'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,6 +27,11 @@ def upgrade():
     op.create_table('alarm_type',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('alarm_type', sa.SmallInteger(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('daq_project',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=50), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('grain_storehouse',
@@ -89,6 +94,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('function_name')
     )
+    op.create_table('daq_worker',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=100), nullable=True),
+    sa.Column('project_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['project_id'], ['daq_project.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('lora_gateway',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('gateway_addr', sa.String(length=4), nullable=False),
@@ -116,6 +128,26 @@ def upgrade():
     )
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
     op.create_index(op.f('ix_users_username'), 'users', ['username'], unique=True)
+    op.create_table('daq_power',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('project_id', sa.Integer(), nullable=True),
+    sa.Column('worker_id', sa.Integer(), nullable=True),
+    sa.Column('datetime', sa.DateTime(), nullable=True),
+    sa.Column('value', sa.Text(), nullable=True),
+    sa.ForeignKeyConstraint(['project_id'], ['daq_project.id'], ),
+    sa.ForeignKeyConstraint(['worker_id'], ['daq_worker.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('daq_temperature',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('project_id', sa.Integer(), nullable=True),
+    sa.Column('worker_id', sa.Integer(), nullable=True),
+    sa.Column('datetime', sa.DateTime(), nullable=True),
+    sa.Column('value', sa.Text(), nullable=True),
+    sa.ForeignKeyConstraint(['project_id'], ['daq_project.id'], ),
+    sa.ForeignKeyConstraint(['worker_id'], ['daq_worker.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('follows',
     sa.Column('follower_id', sa.Integer(), nullable=False),
     sa.Column('followed_id', sa.Integer(), nullable=False),
@@ -215,6 +247,7 @@ def upgrade():
     sa.Column('lora_node_id', sa.Integer(), nullable=False),
     sa.Column('alarm_status', sa.Boolean(), nullable=True),
     sa.Column('datetime', sa.DateTime(), nullable=True),
+    sa.Column('send_alarm_datetime', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['lora_node_id'], ['lora_node.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -253,10 +286,13 @@ def downgrade():
     op.drop_table('posts')
     op.drop_table('grain_barn')
     op.drop_table('follows')
+    op.drop_table('daq_temperature')
+    op.drop_table('daq_power')
     op.drop_index(op.f('ix_users_username'), table_name='users')
     op.drop_index(op.f('ix_users_email'), table_name='users')
     op.drop_table('users')
     op.drop_table('lora_gateway')
+    op.drop_table('daq_worker')
     op.drop_table('tianshuo_rs485_func')
     op.drop_index(op.f('ix_roles_default'), table_name='roles')
     op.drop_table('roles')
@@ -264,6 +300,7 @@ def downgrade():
     op.drop_table('power_io_rs485_func')
     op.drop_table('node_mqtt_trans_func')
     op.drop_table('grain_storehouse')
+    op.drop_table('daq_project')
     op.drop_table('alarm_type')
     op.drop_table('alarm_level_setting')
     # ### end Alembic commands ###

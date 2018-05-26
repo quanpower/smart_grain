@@ -14,8 +14,6 @@ import { AirconControlAutomatic, AirconControlManual } from './components'
 }))
 
 
-
-
 export default class AirConControl extends Component {
   state = {
     barns: 'all',

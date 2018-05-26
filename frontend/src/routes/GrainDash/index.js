@@ -7,7 +7,6 @@ import { AirConDashboard, AirconBlockItem } from './components'
 import styles from './index.less'
 import pathToRegexp from 'path-to-regexp'
 
-
 const bodyStyle = {
   bodyStyle: {
     height: 432,
@@ -15,26 +14,44 @@ const bodyStyle = {
   },
 }
 
-
 @connect(({ grainDash, loading }) => ({
   grainDash,
   loading: loading.effects['grainDash/fetchBarnsOptions'],
 }))
-
 
 export default class GrainDash extends Component {
   state = {
     barns: 'all',
   };
 
+
+
   componentDidMount() {
-    this.props.dispatch({
-      type: 'grainDash/fetchBarns',
-    });
+
+    // let data = this.props.location.query;
+    // let { barnNo } = data;
+    
+    // console.log('location is: ', location)
+    // console.log('--****-barnNo is: ---****--', barnNo)
+
+    // this.setState({barnNo: barnNo});
+    // // this.props.dispatch({
+    // //   type: 'grainDash/fetchBarnNo',
+    // //   payload: {barnNo: barnNo}
+
+    // // });
+
+
 
     this.props.dispatch({
-      type: 'grainDash/fetchAlarmStatus',
+      type: 'grainDash/fetchAirConDashboard',
     });
+    
+    // console.log('--****-fetchAirConDashboard is: ---****--', '---------fetchAirConDashboard----------')
+
+    // this.props.dispatch({
+    //   type: 'grainDash/fetchAirconBlockItems',
+    // });
 
 
     console.log('component did mount!')
@@ -47,15 +64,16 @@ export default class GrainDash extends Component {
     });
   }
 
-  
-
   render() {
+
+
     const { barns_state } = this.state;
-    const { grainDash, loading } = this.props;
-    const { barnNo, barnsOptions, airConDash, airconBlockItems } = grainDash
+    const { grainDash, dispatch, loading } = this.props;
+    const { barnsOptions, airConDash, airconBlockItems } = grainDash
+
 
     console.log('airConDash is: ', airConDash)
-    console.log('--****-barnNo is: ---****--', barnNo)
+
     console.log('--****-airconBlockItems is: ---****--', airconBlockItems)
 
     const cascaderProps = {
@@ -68,7 +86,7 @@ export default class GrainDash extends Component {
         console.log('------select value is:--------')
         console.log(value)
         const barn_no = value[1]
-        dispatch(routerRedux.push(`/grain_dashboard/${barn_no}`))
+        dispatch(routerRedux.push(`/grain-dash/${barn_no}`))
       }
     }
 

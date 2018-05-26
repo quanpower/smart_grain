@@ -12,14 +12,10 @@ const bodyStyle = {
   },
 }
 
-
-
 @connect(({ grain, loading }) => ({
   grain,
   loading: loading.effects['grain/fetchBarns'],
 }))
-
-
 
 export default class Barns extends Component {
   state = {
@@ -35,8 +31,6 @@ export default class Barns extends Component {
       type: 'grain/fetchAlarmStatus',
     });
 
-
-    console.log('component did mount!')
   }
 
   componentWillUnmount() {
@@ -46,13 +40,10 @@ export default class Barns extends Component {
     });
   }
 
-  
-
   render() {
     const { barns_state } = this.state;
     const { grain, loading } = this.props;
     const { barns, alarmStatus, showAudio } = grain
-
 
     const barnCards = barns.map((item, key) => (<Col key={key} lg={6} md={12}>
       <StoreHouse {...item} />

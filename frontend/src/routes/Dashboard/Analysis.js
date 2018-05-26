@@ -85,6 +85,7 @@ export default class Analysis extends Component {
       type: 'survey/clear',
     });
   }
+  
 
   handleChangeSalesType = e => {
     this.setState({

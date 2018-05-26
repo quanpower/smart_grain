@@ -24,6 +24,7 @@ const passwordProgressMap = {
   register,
   submitting: loading.effects['register/submit'],
 }))
+
 @Form.create()
 export default class Register extends Component {
   state = {

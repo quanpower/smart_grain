@@ -1,5 +1,5 @@
-
 import { getNodeAddrByBarnNo, getAllBarns, getAirConDashboard, getAirconBlockItems } from '../services/grain'
+import pathToRegexp from 'path-to-regexp'
 
 
 export default {
@@ -13,6 +13,76 @@ export default {
     airconBlockItems: ['a','b','c'],
     loading: false,
   },
+
+
+  subscriptions: {
+    setup ({ dispatch, history }) {
+      history.listen(({pathname}) => {
+
+        const match = pathToRegexp('/grain-dash').exec(pathname)
+        console.log('---in graindash models---')
+        console.log('match:', match)
+
+        const barnNo = 1
+        console.log('match barnNo:', barnNo)
+
+        // dispatch({
+        //   type: 'graindash/fetchGatewayAddr',
+        //   payload: {
+        //     gatewayAddr: value[0],
+        //   },
+        // })
+
+        dispatch({
+          type: 'fetchBarnNo',
+          payload: {
+            barnNo: barnNo,
+          },
+        })
+
+        // dispatch({
+        //   type: 'fetchBarnsOptions',
+        // })
+
+        dispatch({ 
+          type: 'fetchAirConDashboard',
+          payload: {
+            gatewayAddr: 1,
+            barnNo: barnNo,
+          }
+        })
+        
+        dispatch({ 
+          type: 'fetchAirconBlockItems',
+          payload: {
+            barnNo: barnNo,
+          }
+         })
+
+
+        // setInterval(() => {
+
+        //   dispatch({
+        //     type: 'fetchBarnsOptions',
+        //   })
+
+
+        //   dispatch({ type: 'fetchAirConDashboard',
+        //   })
+
+        //   dispatch({ 
+        //     type: 'fetchAirconBlockItems',
+        //     payload: {
+        //       barnNo: barnNo,
+        //     }
+        //    })
+          
+        // }, 30000)
+
+      })
+    }
+  },
+
 
   effects: {
 
@@ -46,22 +116,23 @@ export default {
     },
 
 
-    * fetchAirConDashboard ({payload}, { call, put, select }) {
+    * fetchAirConDashboard ({}, { call, put, select }) {
+      console.log('in fetchAirConDashboard!')
 
-      const gatewayAddr = yield select(state => state.graindash.gatewayAddr)
+      const gatewayAddr = yield select(state => state.grainDash.gatewayAddr)
       console.log('-----gatewayAddr-------:', gatewayAddr)
 
-      const barnNo = yield select(state => state.graindash.barnNo)
+      const barnNo = yield select(state => state.grainDash.barnNo)
       console.log('-----barnNo-------:', barnNo)
       
-      const payload1 = payload || {
+      const payload = {
         gatewayAddr: gatewayAddr,
         barnNo: barnNo,
       }
 
-      console.log('payload1 is:', payload1)
+      console.log('payload is:', payload)
 
-      const airConDash = yield call(getAirConDashboard, payload1)
+      const airConDash = yield call(getAirConDashboard, payload)
 
       console.log('airConDash is :', airConDash)
 
@@ -88,7 +159,22 @@ export default {
     },
 
 
-    * fetchAirconBlockItems ({ payload }, { call, put }) {
+    * fetchAirconBlockItems (_, { call, put }) {
+
+      const gatewayAddr = yield select(state => state.graindash.gatewayAddr)
+      console.log('-----gatewayAddr-------:', gatewayAddr)
+
+      const barnNo = yield select(state => state.graindash.barnNo)
+      console.log('-----barnNo-------:', barnNo)
+      
+      const payload = {
+        gatewayAddr: gatewayAddr,
+        barnNo: barnNo,
+      }
+
+      console.log('payload is:', payload)
+
+      
       const airconBlockItems = yield call(getAirconBlockItems, payload)
       console.log('airconBlockItems is :', airconBlockItems)
       yield put({
