@@ -43,8 +43,8 @@ export async function getAirConTempRecord () {
 }
 
 
-export async function getAirConDashboard () {
-  return request('/api/air-conditioner_dashboard');
+export async function getAirConDashboard (params) {
+  return request('/api/air-conditioner_dashboard' + params);
 }
 
 
@@ -53,7 +53,10 @@ export async function getNodeAddrByBarnNo () {
 }
 
 
-export async function getAirconBlockItems () {
-  return request('/api/air-conditioner_block_items');
+export async function getAirconBlockItems (params) {
+  return request('/api/air-conditioner_block_items', {
+    method: 'POST',
+    body: params,
+  });
 }
 

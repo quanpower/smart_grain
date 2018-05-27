@@ -189,7 +189,7 @@ export default class Analysis extends Component {
         <Row gutter={24}>
           {console.log('currentPower:', currentPower)}
           {currentPower.map((item, i) => (
-            <Col {...topColResponsiveProps}>
+            <Col {...topColResponsiveProps} key={i}>
               <ChartCard
                 bordered={item.bordered}
                 title={item.title}

@@ -542,13 +542,14 @@ class AirConDashboard(Resource):
         alarmLevelError = alarmLevel[0][1]
 
         max_abc = max(a, b, c)
-        # print('max_abc:', max_abc)
+        print('max_abc:', max_abc)
         if max_abc < alarmLevelWarning:
             return 1
         elif (alarmLevelWarning <= max_abc) and (max_abc <= alarmLevelError):
             return 2
         else:
             return 3
+
 
     def get(self):
 
@@ -566,7 +567,7 @@ class AirConDashboard(Resource):
 
         nodes = db.session.query(LoraNode.node_addr, LoraNode.node_name).join(GrainBarn, GrainBarn.id == LoraNode.grain_barn_id).filter(
             GrainBarn.barn_no == barnNo).order_by(LoraNode.node_name.asc()).all()
-        # print("nodes are:", nodes)
+        print("nodes are:", nodes)
         statuses = []
         for i in range(len(nodes)):
             node = nodes[i]
@@ -1260,7 +1261,7 @@ class AirconBlockItems(Resource):
 
         airconBlockItems = [smarttempctrl, electric, realtimetemp, firealarm, unmanned, dynamiclinkage]
         airconBlockItems_dict = {'airconBlockItems': airconBlockItems}
-        # print(airconBlockItems_dict)
+        print(airconBlockItems_dict)
         return airconBlockItems_dict
 
 

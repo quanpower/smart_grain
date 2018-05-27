@@ -26,43 +26,43 @@ export default class GrainDash extends Component {
 
 
 
-  componentDidMount() {
+  // componentDidMount() {
 
-    // let data = this.props.location.query;
-    // let { barnNo } = data;
+  //   // let data = this.props.location.query;
+  //   // let { barnNo } = data;
     
-    // console.log('location is: ', location)
-    // console.log('--****-barnNo is: ---****--', barnNo)
+  //   // console.log('location is: ', location)
+  //   // console.log('--****-barnNo is: ---****--', barnNo)
 
-    // this.setState({barnNo: barnNo});
-    // // this.props.dispatch({
-    // //   type: 'grainDash/fetchBarnNo',
-    // //   payload: {barnNo: barnNo}
+  //   // this.setState({barnNo: barnNo});
+  //   // // this.props.dispatch({
+  //   // //   type: 'grainDash/fetchBarnNo',
+  //   // //   payload: {barnNo: barnNo}
 
-    // // });
+  //   // // });
 
 
 
-    this.props.dispatch({
-      type: 'grainDash/fetchAirConDashboard',
-    });
+  //   // this.props.dispatch({
+  //   //   type: 'grainDash/fetchAirConDashboard',
+  //   // });
     
-    // console.log('--****-fetchAirConDashboard is: ---****--', '---------fetchAirConDashboard----------')
+  //   // console.log('--****-fetchAirConDashboard is: ---****--', '---------fetchAirConDashboard----------')
 
-    // this.props.dispatch({
-    //   type: 'grainDash/fetchAirconBlockItems',
-    // });
+  //   // this.props.dispatch({
+  //   //   type: 'grainDash/fetchAirconBlockItems',
+  //   // });
 
 
-    console.log('component did mount!')
-  }
+  //   // console.log('component did mount!')
+  // }
 
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'grainDash/clear',
-    });
-  }
+  // componentWillUnmount() {
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: 'grainDash/clear',
+  //   });
+  // }
 
   render() {
 
@@ -72,7 +72,7 @@ export default class GrainDash extends Component {
     const { barnsOptions, airConDash, airconBlockItems } = grainDash
 
 
-    console.log('airConDash is: ', airConDash)
+    console.log('----airConDash is----:', airConDash)
 
     console.log('--****-airconBlockItems is: ---****--', airconBlockItems)
 
@@ -92,7 +92,7 @@ export default class GrainDash extends Component {
 
 
     const itemsCards = airconBlockItems.map((item, key) => (
-      <AirconBlockItem {...item} />
+      <AirconBlockItem key={ key } {...item} />
     ))
 
     return (

@@ -6,17 +6,17 @@ import { routerRedux, Link} from 'dva/router'
 
 function StoreHouse ({ icon, color, title, number, barnNo }) {
 
-  let data = {barnNo:barnNo};
-  let path = {
-  pathname:'grain-dash',
-  query:data,
-  }
+  // let data = {barnNo:barnNo};
+  // let path = {
+  // pathname:'grain-dash',
+  // query:data,
+  // }
   
   return (
     <Card className={styles.storeHouse} bordered={false} bodyStyle={{ padding: 0 }}>
       <Icon className={styles.iconWarp} style={{ color }} type={icon} />
       <div className={styles.content}>
-        <h1 className={styles.title}><Link to={path}>{title || 'No Title'}</Link></h1>
+        <h1 className={styles.title}><Link to={`grain-dash/${barnNo}`}>{title || 'No Title'}</Link></h1>
         <p className={styles.number}>
           {number}℃
         </p>

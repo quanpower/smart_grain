@@ -17,68 +17,40 @@ export default {
 
   subscriptions: {
     setup ({ dispatch, history }) {
-      history.listen(({pathname}) => {
+      return history.listen(({pathname, query}) => {
 
-        const match = pathToRegexp('/grain-dash').exec(pathname)
-        console.log('---in graindash models---')
-        console.log('match:', match)
+        // console.log('pathname:', pathname)
+        if (pathname.search('grain-dash') != -1) {
 
-        const barnNo = 1
-        console.log('match barnNo:', barnNo)
+          const match = pathToRegexp('/grain/grain-dash/:barnNo').exec(pathname)
+          // console.log('---in graindash models---')
+          // console.log('match:', match)
 
-        // dispatch({
-        //   type: 'graindash/fetchGatewayAddr',
-        //   payload: {
-        //     gatewayAddr: value[0],
-        //   },
-        // })
+          const barnNo = match[1]
+          // console.log('match barnNo:', barnNo)
 
-        dispatch({
-          type: 'fetchBarnNo',
-          payload: {
-            barnNo: barnNo,
-          },
-        })
+          dispatch({
+            type: 'fetchBarnNo',
+            payload: {
+              barnNo: barnNo,
+            },
+          })
 
-        // dispatch({
-        //   type: 'fetchBarnsOptions',
-        // })
+          // dispatch({
+          //   type: 'fetchBarnsOptions',
+          // })
 
-        dispatch({ 
-          type: 'fetchAirConDashboard',
-          payload: {
-            gatewayAddr: 1,
-            barnNo: barnNo,
-          }
-        })
-        
-        dispatch({ 
-          type: 'fetchAirconBlockItems',
-          payload: {
-            barnNo: barnNo,
-          }
-         })
+          dispatch({ 
+            type: 'fetchAirConDashboard',
+          })
 
-
-        // setInterval(() => {
-
-        //   dispatch({
-        //     type: 'fetchBarnsOptions',
-        //   })
-
-
-        //   dispatch({ type: 'fetchAirConDashboard',
-        //   })
-
-        //   dispatch({ 
-        //     type: 'fetchAirconBlockItems',
-        //     payload: {
-        //       barnNo: barnNo,
-        //     }
-        //    })
-          
-        // }, 30000)
-
+          dispatch({ 
+            type: 'fetchAirconBlockItems',
+            payload: {
+              barnNo: barnNo,
+            }
+           })
+        }
       })
     }
   },
@@ -116,19 +88,11 @@ export default {
     },
 
 
-    * fetchAirConDashboard ({}, { call, put, select }) {
-      console.log('in fetchAirConDashboard!')
+    * fetchAirConDashboard (_, { call, put, select }) {
 
       const gatewayAddr = yield select(state => state.grainDash.gatewayAddr)
-      console.log('-----gatewayAddr-------:', gatewayAddr)
-
       const barnNo = yield select(state => state.grainDash.barnNo)
-      console.log('-----barnNo-------:', barnNo)
-      
-      const payload = {
-        gatewayAddr: gatewayAddr,
-        barnNo: barnNo,
-      }
+      const payload = '?gatewayAddr=' + gatewayAddr + '&barnNo=' + barnNo
 
       console.log('payload is:', payload)
 
@@ -148,8 +112,6 @@ export default {
     * fetchBarnNo ({ payload }, { put }) {
       const { barnNo } = payload
 
-      console.log('-----payload is------ :', payload)
-      console.log('-----barnNo is------ :', barnNo)
       yield put({
         type: 'save',
         payload: {
@@ -159,22 +121,18 @@ export default {
     },
 
 
-    * fetchAirconBlockItems (_, { call, put }) {
+    * fetchAirconBlockItems (_, { call, put, select }) {
 
-      const gatewayAddr = yield select(state => state.graindash.gatewayAddr)
-      console.log('-----gatewayAddr-------:', gatewayAddr)
-
-      const barnNo = yield select(state => state.graindash.barnNo)
-      console.log('-----barnNo-------:', barnNo)
+      const gatewayAddr = yield select(state => state.grainDash.gatewayAddr)
+      const barnNo = yield select(state => state.grainDash.barnNo)
       
       const payload = {
         gatewayAddr: gatewayAddr,
         barnNo: barnNo,
       }
 
-      console.log('payload is:', payload)
+      console.log('fetchAirconBlockItems payload is:', payload)
 
-      
       const airconBlockItems = yield call(getAirconBlockItems, payload)
       console.log('airconBlockItems is :', airconBlockItems)
       yield put({

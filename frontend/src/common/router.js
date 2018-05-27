@@ -88,22 +88,22 @@ export const getRouterData = app => {
     },
 
 
-    '/grain/grain': {
+    '/grain/index': {
       component: dynamicWrapper(app, ['grain'], () =>
         import('../routes/Grain/index')
       ),
     },
-    '/grain/grain-dash': {
+    '/grain/grain-dash/:barnNo': {
       component: dynamicWrapper(app, ['grainDash'], () =>
         import('../routes/GrainDash/index')
       ),
     },
-    '/grain/fire-alarm': {
+    '/grain/fire-alarm/:barnNo': {
       component: dynamicWrapper(app, ['fireAlarm'], () =>
         import('../routes/FireAlarm/index')
       ),
     },
-    '/grain/aircon-control': {
+    '/grain/aircon-control/:barnNo': {
       component: dynamicWrapper(app, ['airconControl'], () =>
         import('../routes/AirconControl/index')
       ),

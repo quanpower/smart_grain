@@ -29,7 +29,7 @@ const menuData = [
     children: [
       {
         name: 'index',
-        path: 'grain',
+        path: 'index',
       },
       {
         name: 'graindash',
