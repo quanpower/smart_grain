@@ -24,7 +24,7 @@ const menuData = [
   },
   {
     name: 'grain',
-    icon: 'form',
+    icon: 'dashboard',
     path: 'grain',
     children: [
       {
@@ -33,19 +33,19 @@ const menuData = [
       },
       {
         name: 'graindash',
-        path: 'grain-dash',
+        path: 'grain-dash/1',
       },
       {
         name: 'fireAlarm',
-        path: 'fire-alarm',
+        path: 'fire-alarm/1',
       },
       {
         name: 'airconControl',
-        path: 'aircon-control',
+        path: 'aircon-control/1',
       },
       {
         name: 'aircondetail',
-        path: 'aircon-detail',
+        path: 'aircon-detail/29',
       },
       {
         name: 'airconStartEndTime',
@@ -55,24 +55,16 @@ const menuData = [
         name: 'grainhistory',
         path: 'grain-history',
       },
-      {
-        name: 'tianshuoOnOff',
-        path: 'tianshuo-on-off',
-      },
-      {
-        name: 'tianshuoSetting',
-        path: 'tianshuo-setting',
-      },
+      // {
+      //   name: 'tianshuoOnOff',
+      //   path: 'tianshuo-on-off',
+      // },
+      // {
+      //   name: 'tianshuoSetting',
+      //   path: 'tianshuo-setting',
+      // },
 
-      {
-        name: '分步表单',
-        path: 'step-form',
-      },
-      {
-        name: '高级表单',
-        authority: 'admin',
-        path: 'advanced-form',
-      },
+
     ],
   },
   {

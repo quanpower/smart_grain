@@ -1,5 +1,6 @@
 import { powerControl, getElectricPowerItems } from '../services/fireAlarm'
 import { getNodeAddrByBarnNo, getAllBarns } from '../services/grain'
+import pathToRegexp from 'path-to-regexp'
 
 
 export default {
@@ -14,6 +15,42 @@ export default {
     loading: false,
   },
 
+  subscriptions: {
+    setup ({ dispatch, history }) {
+      return history.listen(({pathname, query}) => {
+
+        // console.log('pathname:', pathname)
+        if (pathname.search('fire-alarm') != -1) {
+
+          const match = pathToRegexp('/grain/fire-alarm/:barnNo').exec(pathname)
+          // console.log('---in graindash models---')
+          // console.log('match:', match)
+
+          const barnNo = match[1]
+          // console.log('match barnNo:', barnNo)
+
+          dispatch({
+            type: 'fetchBarnNo',
+            payload: {
+              barnNo: barnNo,
+            },
+          })
+
+          // dispatch({
+          //   type: 'fetchBarnsOptions',
+          // })
+
+          dispatch({ 
+            type: 'fetchElectricPowerItems',
+            payload: {
+              barnNo: barnNo,
+            }
+          })
+
+        }
+      })
+    }
+  },
   
   effects: {
 
@@ -62,8 +99,8 @@ export default {
       console.log('-----fetchAirConControlItems-------')
       console.log(data)
 
-      if (data.success) {
-        yield put({ type: 'save', payload: { electricPowerItems: data.list } })
+      if (data) {
+        yield put({ type: 'save', payload: { electricPowerItems: data } })
       } else {
         throw data
       }
@@ -72,7 +109,7 @@ export default {
     * switchElectricPower ({ payload }, { call, put }) {
       console.log('payload', payload)
       const data = yield call(powerControl, payload)
-      if (data.success) {
+      if (data) {
         console.log(data)
       } else {
         throw data

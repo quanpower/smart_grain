@@ -1,6 +1,7 @@
-import { create, remove, update, switchAirconOnOff, switchAirconOnOffAllOneKey, updateBarnLoraNodeDatetime, updateLoraNodeDatetime, oneAirConStartEndTimeUpdate, getAirConControlItems } from '../services/airconcontrol'
+import { create, remove, update, switchAirconOnOff, switchAirconOnOffAllOneKey, updateBarnLoraNodeDatetime, updateLoraNodeDatetime, oneAirConStartEndTimeUpdate, getAirConControlItems } from '../services/airconControl'
 import { getNodeAddrByBarnNo, getAllNodes, getAllBarns } from '../services/grain'
 import * as airConControlService from '../services/airconcontrols'
+import pathToRegexp from 'path-to-regexp'
 
 export default {
   namespace: 'airconControl',
@@ -14,7 +15,44 @@ export default {
     loading: false,
   },
 
-  
+  subscriptions: {
+    setup ({ dispatch, history }) {
+      return history.listen(({pathname, query}) => {
+
+        // console.log('pathname:', pathname)
+        if (pathname.search('aircon-control') != -1) {
+
+          const match = pathToRegexp('/grain/aircon-control/:barnNo').exec(pathname)
+          // console.log('---in graindash models---')
+          // console.log('match:', match)
+
+          const barnNo = match[1]
+          // console.log('match barnNo:', barnNo)
+
+          dispatch({
+            type: 'fetchBarnNo',
+            payload: {
+              barnNo: barnNo,
+            },
+          })
+
+          // dispatch({
+          //   type: 'fetchBarnsOptions',
+          // })
+
+          dispatch({ 
+            type: 'fetchAirConControlItems',
+            payload: {
+              barnNo: barnNo,
+            }
+          })
+
+        }
+      })
+    }
+  },
+
+
   effects: {
     * fetchGatewayAddr ({ payload }, { put }) {
       const { gatewayAddr } = payload
@@ -63,8 +101,8 @@ export default {
       console.log('-----fetchAirConControlItems-------')
       console.log(data)
 
-      if (data.success) {
-        yield put({ type: 'save', payload: { airConControlItems: data.list } })
+      if (data) {
+        yield put({ type: 'save', payload: { airConControlItems: data} })
       } else {
         throw data
       }
@@ -91,7 +129,7 @@ export default {
     * delete ({ payload }, { call, put, select }) {
       const data = yield call(remove, { id: payload })
       const { selectedRowKeys } = yield select(_ => _.user)
-      if (data.success) {
+      if (data) {
         yield put({ type: 'save', payload: { selectedRowKeys: selectedRowKeys.filter(_ => _ !== payload) } })
         yield put({ type: 'query' })
       } else {
@@ -101,7 +139,7 @@ export default {
 
     * multiDelete ({ payload }, { call, put }) {
       const data = yield call(usersService.remove, payload)
-      if (data.success) {
+      if (data) {
         yield put({ type: 'save', payload: { selectedRowKeys: [] } })
         yield put({ type: 'query' })
       } else {
@@ -112,7 +150,7 @@ export default {
     * create ({ payload }, { call, put }) {
       console.log('payload', payload)
       const data = yield call(create, payload)
-      if (data.success) {
+      if (data) {
         console.log('i am in!')
         console.log(data)
         yield put({ type: 'hideModal' })
@@ -126,7 +164,7 @@ export default {
     * airconOnOff ({ payload }, { call, put }) {
       console.log('payload', payload)
       const data = yield call(switchAirconOnOff, payload)
-      if (data.success) {
+      if (data) {
         console.log('switch aircon on/off!')
         console.log(data)
       } else {
@@ -138,7 +176,7 @@ export default {
     * airconOnOffAllOneKey ({ payload }, { call, put }) {
       console.log('payload:', payload)
       const data = yield call(switchAirconOnOffAllOneKey, payload)
-      if (data.success) {
+      if (data) {
         console.log('switch aircon on/off!')
         console.log(data)
       } else {
@@ -150,7 +188,7 @@ export default {
     * updateLoraNode ({ payload }, { call, put }) {
       console.log('payload', payload)
       const data = yield call(updateLoraNodeDatetime, payload)
-      if (data.success) {
+      if (data) {
         console.log('update lora node datetime!')
         console.log(data)
       } else {
@@ -163,7 +201,7 @@ export default {
       console.log('payload', payload)
 
       const data = yield call(updateBarnLoraNodeDatetime, payload)
-      if (data.success) {
+      if (data) {
         console.log('update lora node datetime!')
         console.log(data)
       } else {
@@ -175,7 +213,7 @@ export default {
       const id = yield select(({ user }) => user.currentItem.id)
       const newUser = { ...payload, id }
       const data = yield call(update, newUser)
-      if (data.success) {
+      if (data) {
         yield put({ type: 'hideModal' })
         yield put({ type: 'query' })
       } else {

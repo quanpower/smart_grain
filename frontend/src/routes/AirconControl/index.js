@@ -3,8 +3,8 @@ import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 import { Row, Col, Button, Popconfirm, Cascader, Card } from 'antd'
 import List from './List'
-// import Filter from './Filter'
-// import Modal from './Modal'
+import Filter from './Filter'
+import Modal from './Modal'
 import { AirconControlAutomatic, AirconControlManual } from './components'
 
 
@@ -19,58 +19,35 @@ export default class AirConControl extends Component {
     barns: 'all',
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'airconControl/fetchBarns',
-    });
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: 'airconControl/fetchBarns',
+  //   });
 
-    this.props.dispatch({
-      type: 'airconControl/fetchAlarmStatus',
-    });
+  //   this.props.dispatch({
+  //     type: 'airconControl/fetchAlarmStatus',
+  //   });
 
 
-    console.log('component did mount!')
-  }
+  //   console.log('component did mount!')
+  // }
 
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'airconControl/clear',
-    });
-  }
+  // componentWillUnmount() {
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: 'airconControl/clear',
+  //   });
+  // }
 
 
   render() {
     const { barns_state } = this.state;
     const { airconControl, dispatch, loading } = this.props;
-    const { barnsOptions, airConControlItems, barnNo, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = airconControl
-    const { pageSize } = pagination
+    const { barnNo, barnsOptions, airConControlItems, currentItem } = airconControl
 
-    // const modalProps = {
-    //     item: modalType === 'create' ? {} : currentItem,
-    //     visible: modalVisible,
-    //     maskClosable: false,
-    //     confirmLoading: loading.effects['user/update'],
-    //     title: `${modalType === 'create' ? '空调远程控制' : 'Update User'}`,
-    //     wrapClassName: 'vertical-center-modal',
-    //     onOk (data) {
-    //       dispatch({
-    //         // type: `airconcontrol/${modalType}`,
-    //         type: 'airconcontrol/create',
-    //         payload: data,
-    //       })
-    //       console.log('airconcontrol')
-    //     },
-    //     onCancel () {
-    //       dispatch({
-    //         type: 'airconcontrol/hideModal',
-    //       })
-    //       console.log('airconcontrol Cancel')
-    //     },
-    //   }
 
-    //   console.log('----airConControlItems-----')
-    //   console.log(airConControlItems)
+    console.log('----airConControlItems-----')
+    console.log(airConControlItems)
 
 
     const cascaderProps = {
@@ -135,13 +112,9 @@ export default class AirConControl extends Component {
     return (
       <Fragment>
         <Card bordered={false} bodyStyle={{ padding: '24px 36px 24px 0', }}>
-        <Cascader {...cascaderProps} />
+          <Cascader {...cascaderProps} />
+        </Card>
 
-      </Card>
-
-      // <Filter {...filterProps} />
-
-      // <Modal {...modalProps} />
 
       <AirconControlManual dispatch={dispatch} location={location} barnNo={barnNo} airConControlItems={airConControlItems} />
 

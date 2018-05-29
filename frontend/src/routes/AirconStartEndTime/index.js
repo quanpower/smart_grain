@@ -16,25 +16,25 @@ export default class AirConStartEndTime extends Component {
     barns: 'all',
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'airconStartEndTime/fetchBarns',
-    });
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: 'airconStartEndTime/fetchBarns',
+  //   });
 
-    this.props.dispatch({
-      type: 'airconStartEndTime/fetchAlarmStatus',
-    });
+  //   this.props.dispatch({
+  //     type: 'airconStartEndTime/fetchAlarmStatus',
+  //   });
 
 
-    console.log('component did mount!')
-  }
+  //   console.log('component did mount!')
+  // }
 
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'airconStartEndTime/clear',
-    });
-  }
+  // componentWillUnmount() {
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: 'airconStartEndTime/clear',
+  //   });
+  // }
 
   
 

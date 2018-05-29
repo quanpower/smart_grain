@@ -26,32 +26,33 @@ export default class FireAlarm extends Component {
     barns: 'all',
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'fireAlarm/fetchBarns',
-    });
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: 'fireAlarm/fetchBarns',
+  //   });
 
-    this.props.dispatch({
-      type: 'fireAlarm/fetchAlarmStatus',
-    });
+  //   this.props.dispatch({
+  //     type: 'fireAlarm/fetchAlarmStatus',
+  //   });
 
 
-    console.log('component did mount!')
-  }
+  //   console.log('component did mount!')
+  // }
 
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'fireAlarm/clear',
-    });
-  }
+  // componentWillUnmount() {
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: 'fireAlarm/clear',
+  //   });
+  // }
 
 
   render() {
     const { barns_state } = this.state;
-    const { fireAlarm, loading } = this.props;
+    const { fireAlarm, dispatch, loading } = this.props;
     const { electricPowerItems, barnsOptions, barnNo } = fireAlarm
 
+    console.log('electricPowerItems:', electricPowerItems)
 
   const cascaderProps = {
 
@@ -63,7 +64,7 @@ export default class FireAlarm extends Component {
       console.log('------select value is:--------')
       console.log(value)
       const barn_no = value[1]
-      dispatch(routerRedux.push(`/fire_alarm/${barn_no}`))
+      dispatch(routerRedux.push(`/fire-alarm/${barn_no}`))
     }
   }
 

@@ -28,18 +28,18 @@ export async function getGrainHistory () {
 }
 
 
-export async function getAirConTemp () {
-  return request('/api/air-conditioner_temperature');
+export async function getAirConTemp (params) {
+  return request('/api/air-conditioner_temperature' + params);
 }
 
 
-export async function getAirConTemps () {
-  return request('/api/air-conditioner_temperatures');
+export async function getAirConTemps (params) {
+  return request('/api/air-conditioner_temperatures' + params);
 }
 
 
-export async function getAirConTempRecord () {
-  return request('/api/air-conditioner_temperature_record');
+export async function getAirConTempRecord (params) {
+  return request('/api/air-conditioner_temperature_record' + params);
 }
 
 

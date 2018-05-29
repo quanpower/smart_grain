@@ -489,19 +489,19 @@ class AirConTempRecord(Resource):
 
     def get(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('gateway_addr', type=str)
-        parser.add_argument('node_addr', type=str)
-        parser.add_argument('start_time', type=str)
-        parser.add_argument('end_time', type=str)
+        parser.add_argument('gatewayAddr', type=str)
+        parser.add_argument('nodeAddr', type=str)
+        parser.add_argument('startTime', type=str)
+        parser.add_argument('endTime', type=str)
 
         args = parser.parse_args()
 
         print('--------AirConTempRecord-------', args)
 
-        gatewayAddr = args['gateway_addr']
-        nodeAddr = args['node_addr']
-        startTime = datetime.datetime.strptime(args['start_time'], "%Y-%m-%d %H:%M:%S")
-        endTime = datetime.datetime.strptime(args['end_time'], "%Y-%m-%d %H:%M:%S")
+        gatewayAddr = args['gatewayAddr']
+        nodeAddr = args['nodeAddr']
+        startTime = datetime.datetime.strptime(args['startTime'], "%Y-%m-%d %H:%M:%S")
+        endTime = datetime.datetime.strptime(args['endTime'], "%Y-%m-%d %H:%M:%S")
 
         print(startTime)
         print(endTime)
@@ -600,15 +600,12 @@ class AirConDashboard(Resource):
 
 class GrainHistory(Resource):
     def get(self):
-        get_parser = reqparse.RequestParser()
-        get_parser.add_argument('status', type=int, location='args', required=True)
-        args = get_parser.parse_args()
-        status = args.get('status')
 
         history_records = db.session.query(GrainTemp.grain_barn_id, GrainTemp.lora_gateway_id, LoraNode.node_addr,
                                            GrainTemp.temp1, GrainTemp.temp2, GrainTemp.temp3, GrainTemp.battery_vol,
                                            GrainTemp.datetime).join(LoraNode, LoraNode.id == GrainTemp.lora_node_id).order_by(
             GrainTemp.datetime.desc()).all()
+                                           
         print('*********history_records*************', history_records)
 
         historys = []
@@ -1215,7 +1212,7 @@ class AirconBlockItems(Resource):
         title1 = '智能控温'
         avatar1 = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504847335593&di=d7fd8e71543f9b99f12f614718757a0e&imgtype=0&src=http%3A%2F%2Fc1.neweggimages.com.cn%2FNeweggPic2%2Fneg%2FP800%2FA16-184-4PU.jpg'
         background1 = '#64ea91'
-        link1 = '/aircon_control/' + barnNo
+        link1 = '/grain/aircon-control/' + barnNo
         smarttempctrl = {'name': '', 'title': title1, 'content': '', 'avatar': avatar1, 'link': link1, 'background': background1}
 
 
@@ -1227,14 +1224,14 @@ class AirconBlockItems(Resource):
             GrainBarn.barn_no == barnNo).order_by(LoraNode.node_name.asc()).all()
 
         nodeAddr = nodes[0][0]
-        link2 = '/aircondetail/' + nodeAddr
+        link2 = '/grain/aircon-detail/' + nodeAddr
         realtimetemp = {'name': '', 'title': title2, 'content': '', 'avatar': avatar2, 'link': link2, 'background': background2}
 
 
         title3 = '火灾预警'
         avatar3 = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504847444729&di=8d63e49c779b5c58f828bdcb45efd73a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0b55b319ebc4b745d353e132c5fc1e178b8215ca.jpg'
         background3 = '#d897eb'
-        link3 = '/fire_alarm/' + barnNo
+        link3 = '/grain/fire-alarm/' + barnNo
         firealarm = {'name': '', 'title': title3, 'content': '', 'avatar': avatar3, 'link': link3, 'background': background3}
 
 
@@ -1255,7 +1252,7 @@ class AirconBlockItems(Resource):
         title6 = '智能控电'
         avatar6 = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504847487313&di=250cf0c99e194c4a5c3413f866aa2a42&imgtype=0&src=http%3A%2F%2Fdown.safehoo.com%2Flt%2Fforum%2F201311%2F18%2F144905a4jnod435ndzn7sj.jpg'
         background6 = '#f797d6'
-        link6 = '/fire_alarm/' + barnNo
+        link6 = '/grain/fire-alarm/' + barnNo
         electric = {'name': '', 'title': title6, 'content': '', 'avatar': avatar6, 'link': link6, 'background': background6}
 
 

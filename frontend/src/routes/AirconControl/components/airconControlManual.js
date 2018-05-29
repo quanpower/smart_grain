@@ -11,7 +11,7 @@ function AirconControlManual ({ airConControlItems, barnNo, location, dispatch }
 
 
   const airconOnOffControlItems = airConControlItems.map((item, key) => (
-    <Col lg={12} md={24}>
+    <Col key={key} lg={12} md={24}>
       <Row gutter={24}>
         <Col key={key} lg={24} md={12}>
           <Card bordered={false}

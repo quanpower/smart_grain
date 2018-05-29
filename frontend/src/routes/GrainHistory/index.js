@@ -3,6 +3,7 @@ import { connect } from 'dva'
 import { Row, Tabs } from 'antd'
 import { routerRedux } from 'dva/router'
 import List from './List'
+import queryString from 'query-string'
 
 const TabPane = Tabs.TabPane
 
@@ -14,7 +15,7 @@ const EnumPostStatus = {
 
 @connect(({ grainHistory, loading }) => ({
   grainHistory,
-  loading: loading.effects['grainHistory/fetchBarnsOptions'],
+  loading: loading.effects['grainHistory/query'],
 }))
 
 
@@ -23,33 +24,34 @@ export default class GrainHistory extends Component {
     barns: 'all',
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'grainHistory/fetchBarns',
-    });
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: 'grainHistory/fetchBarns',
+  //   });
 
-    this.props.dispatch({
-      type: 'grainHistory/fetchAlarmStatus',
-    });
+  //   this.props.dispatch({
+  //     type: 'grainHistory/fetchAlarmStatus',
+  //   });
 
 
-    console.log('component did mount!')
-  }
+  //   console.log('component did mount!')
+  // }
 
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'grainHistory/clear',
-    });
-  }
+  // componentWillUnmount() {
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: 'grainHistory/clear',
+  //   });
+  // }
 
   
 
   render() {
     const { barns_state } = this.state;
-    const { grainHistory, loading } = this.props;
+    const { grainHistory, dispatch, location, loading } = this.props;
     const { list, pagination } = grainHistory
 
+    const { query = {}, pathname } = location
 
     const listProps = {
       pagination,

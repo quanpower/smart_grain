@@ -27,7 +27,7 @@ const status = {
 function AirConDashboard ({ data }) {
 
 
-  console.log('******AirConDashboard******', data)
+  console.log('******AirConDashboard******:', data)
 
   const columns = [
     {
@@ -40,7 +40,7 @@ function AirConDashboard ({ data }) {
       title: 'content',
       dataIndex: 'content',
       render: (text, it) => (<div>
-        <h1 className={styles.name}><Link to={`/aircondetail/${it.nodeAddr}`}>{it.name}</Link></h1>
+        <h1 className={styles.name}><Link to={`/grain/aircon-detail/${it.nodeAddr}`}>{it.name}</Link></h1>
         <p className={styles.content}>{it.content}</p>
         <div className={styles.daterow}>
           <Tag color={status[it.status].color}>{status[it.status].text}</Tag>

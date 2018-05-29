@@ -108,7 +108,7 @@ export const getRouterData = app => {
         import('../routes/AirconControl/index')
       ),
     },
-        '/grain/aircon-detail': {
+        '/grain/aircon-detail/:nodeAddr': {
       component: dynamicWrapper(app, ['airconDetail'], () =>
         import('../routes/AirconDetail/index')
       ),

@@ -1,4 +1,4 @@
-import { updateOneAirConStartEndTime } from '../services/airconcontrol'
+import { updateOneAirConStartEndTime } from '../services/airconControl'
 
 export default {
   namespace: 'airconStartEndTime',

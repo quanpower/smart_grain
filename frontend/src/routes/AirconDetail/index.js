@@ -28,25 +28,25 @@ export default class AirConDetail extends Component {
     barns: 'all',
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'airconDetail/fetchBarns',
-    });
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: 'airconDetail/fetchBarns',
+  //   });
 
-    this.props.dispatch({
-      type: 'airconDetail/fetchAlarmStatus',
-    });
+  //   this.props.dispatch({
+  //     type: 'airconDetail/fetchAlarmStatus',
+  //   });
 
 
-    console.log('component did mount!')
-  }
+  //   console.log('component did mount!')
+  // }
 
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'airconDetail/clear',
-    });
-  }
+  // componentWillUnmount() {
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: 'airconDetail/clear',
+  //   });
+  // }
 
 
   render() {
