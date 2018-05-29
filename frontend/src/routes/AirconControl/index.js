@@ -16,7 +16,11 @@ import { AirconControlAutomatic, AirconControlManual } from './components'
 
 export default class AirConControl extends Component {
   state = {
-    barns: 'all',
+    gatewayAddr: 1,
+    barnNo: 1,
+    barnsOptions: [],
+    airConControlItems: [],
+    currentItem: {},
   };
 
   // componentDidMount() {
@@ -40,8 +44,28 @@ export default class AirConControl extends Component {
   // }
 
 
+
+  componentDidMount() {
+    console.log(this.state)
+    const { barnNo } = this.state;
+
+    this.timer = setInterval(() => {
+
+      this.props.dispatch({ 
+        type: 'airconControl/fetchAirConControlItems',
+        payload: {
+          barnNo: barnNo,
+        }
+      })
+
+    }, 60000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   render() {
-    const { barns_state } = this.state;
     const { airconControl, dispatch, loading } = this.props;
     const { barnNo, barnsOptions, airConControlItems, currentItem } = airconControl
 
@@ -50,20 +74,20 @@ export default class AirConControl extends Component {
     console.log(airConControlItems)
 
 
-    const cascaderProps = {
+    // const cascaderProps = {
 
-      size: 'large',
-      defaultValue: ['1', '1'],
-      options: barnsOptions,
+    //   size: 'large',
+    //   defaultValue: ['1', '1'],
+    //   options: barnsOptions,
 
-      onChange (value) {
-        console.log('------select value is:--------')
-        console.log(value)
-        const barn_no = value[1]
-        dispatch(routerRedux.push(`/aircon_control/${barn_no}`))
+    //   onChange (value) {
+    //     console.log('------select value is:--------')
+    //     console.log(value)
+    //     const barn_no = value[1]
+    //     dispatch(routerRedux.push(`/aircon_control/${barn_no}`))
 
-      }
-    }
+    //   }
+    // }
 
 
     // const filterProps = {
@@ -111,12 +135,8 @@ export default class AirConControl extends Component {
 
     return (
       <Fragment>
-        <Card bordered={false} bodyStyle={{ padding: '24px 36px 24px 0', }}>
-          <Cascader {...cascaderProps} />
-        </Card>
 
-
-      <AirconControlManual dispatch={dispatch} location={location} barnNo={barnNo} airConControlItems={airConControlItems} />
+        <AirconControlManual dispatch={dispatch} location={location} barnNo={barnNo} airConControlItems={airConControlItems} />
 
       </Fragment>
     );

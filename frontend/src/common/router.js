@@ -72,6 +72,53 @@ export const getRouterData = app => {
     '/': {
       component: dynamicWrapper(app, ['user', 'login'], () => import('../layouts/BasicLayout')),
     },
+
+    '/index': {
+      component: dynamicWrapper(app, ['grain'], () =>
+        import('../routes/Grain/index')
+      ),
+    },
+    '/grain-dash/:barnNo': {
+      component: dynamicWrapper(app, ['grainDash'], () =>
+        import('../routes/GrainDash/index')
+      ),
+    },
+    '/fire-alarm/:barnNo': {
+      component: dynamicWrapper(app, ['fireAlarm'], () =>
+        import('../routes/FireAlarm/index')
+      ),
+    },
+    '/aircon-control/:barnNo': {
+      component: dynamicWrapper(app, ['airconControl'], () =>
+        import('../routes/AirconControl/index')
+      ),
+    },
+      '/aircon-detail/:nodeAddr': {
+      component: dynamicWrapper(app, ['airconDetail'], () =>
+        import('../routes/AirconDetail/index')
+      ),
+    },
+      '/aircon-start-end-time': {
+      component: dynamicWrapper(app, ['airconStartEndTime'], () =>
+        import('../routes/AirconStartEndTime/index')
+      ),
+    },
+      '/grain-history': {
+      component: dynamicWrapper(app, ['grainHistory'], () =>
+        import('../routes/GrainHistory/index')
+      ),
+    },
+      '/tianshuo-on-off': {
+      component: dynamicWrapper(app, ['tianshuoOnOff'], () =>
+        import('../routes/TianshuoOnOff/index')
+      ),
+    },
+      '/tianshuo-setting': {
+      component: dynamicWrapper(app, ['tianshuoSetting'], () =>
+        import('../routes/TianshuoSetting/index')
+      ),
+    },
+
     '/dashboard/analysis': {
       component: dynamicWrapper(app, ['survey'], () => import('../routes/Dashboard/Analysis')),
     },
@@ -85,53 +132,6 @@ export const getRouterData = app => {
       // hideInBreadcrumb: true,
       // name: '工作台',
       // authority: 'admin',
-    },
-
-
-    '/grain/index': {
-      component: dynamicWrapper(app, ['grain'], () =>
-        import('../routes/Grain/index')
-      ),
-    },
-    '/grain/grain-dash/:barnNo': {
-      component: dynamicWrapper(app, ['grainDash'], () =>
-        import('../routes/GrainDash/index')
-      ),
-    },
-    '/grain/fire-alarm/:barnNo': {
-      component: dynamicWrapper(app, ['fireAlarm'], () =>
-        import('../routes/FireAlarm/index')
-      ),
-    },
-    '/grain/aircon-control/:barnNo': {
-      component: dynamicWrapper(app, ['airconControl'], () =>
-        import('../routes/AirconControl/index')
-      ),
-    },
-        '/grain/aircon-detail/:nodeAddr': {
-      component: dynamicWrapper(app, ['airconDetail'], () =>
-        import('../routes/AirconDetail/index')
-      ),
-    },
-        '/grain/aircon-start-end-time': {
-      component: dynamicWrapper(app, ['airconStartEndTime'], () =>
-        import('../routes/AirconStartEndTime/index')
-      ),
-    },
-        '/grain/grain-history': {
-      component: dynamicWrapper(app, ['grainHistory'], () =>
-        import('../routes/GrainHistory/index')
-      ),
-    },
-        '/grain/tianshuo-on-off': {
-      component: dynamicWrapper(app, ['tianshuoOnOff'], () =>
-        import('../routes/TianshuoOnOff/index')
-      ),
-    },
-        '/grain/tianshuo-setting': {
-      component: dynamicWrapper(app, ['tianshuoSetting'], () =>
-        import('../routes/TianshuoSetting/index')
-      ),
     },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),

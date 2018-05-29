@@ -47,7 +47,7 @@ export default {
         // console.log('pathname:', pathname)
         if (pathname.search('aircon-detail') != -1) {
 
-          const match = pathToRegexp('/grain/aircon-detail/:nodeAddr').exec(pathname)
+          const match = pathToRegexp('/aircon-detail/:nodeAddr').exec(pathname)
           // console.log('---in graindash models---')
           // console.log('match:', match)
 

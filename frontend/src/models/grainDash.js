@@ -22,7 +22,7 @@ export default {
         // console.log('pathname:', pathname)
         if (pathname.search('grain-dash') != -1) {
 
-          const match = pathToRegexp('/grain/grain-dash/:barnNo').exec(pathname)
+          const match = pathToRegexp('/grain-dash/:barnNo').exec(pathname)
           // console.log('---in graindash models---')
           // console.log('match:', match)
 

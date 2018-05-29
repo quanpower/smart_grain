@@ -23,7 +23,11 @@ const bodyStyle = {
 
 export default class FireAlarm extends Component {
   state = {
-    barns: 'all',
+    gatewayAddr: 1,
+    barnNo: 1,
+    barnsOptions: [],
+    electricPowerItems: [],
+    switch: [],
   };
 
   // componentDidMount() {
@@ -54,19 +58,19 @@ export default class FireAlarm extends Component {
 
     console.log('electricPowerItems:', electricPowerItems)
 
-  const cascaderProps = {
+  // const cascaderProps = {
 
-    size: 'large',
-    defaultValue: ['1', '1'],
-    options: barnsOptions,
+  //   size: 'large',
+  //   defaultValue: ['1', '1'],
+  //   options: barnsOptions,
 
-    onChange (value) {
-      console.log('------select value is:--------')
-      console.log(value)
-      const barn_no = value[1]
-      dispatch(routerRedux.push(`/fire-alarm/${barn_no}`))
-    }
-  }
+  //   onChange (value) {
+  //     console.log('------select value is:--------')
+  //     console.log(value)
+  //     const barn_no = value[1]
+  //     dispatch(routerRedux.push(`/fire-alarm/${barn_no}`))
+  //   }
+  // }
 
 
   const electricPowerOnOffItems = electricPowerItems.map((item, key) => (
@@ -92,9 +96,6 @@ export default class FireAlarm extends Component {
     return (
       <Fragment>
         <Row gutter={24}>
-          <Card bordered={false} bodyStyle={{ padding: '24px 36px 24px 0', }}>
-            <Cascader {...cascaderProps} />
-          </Card>
 
           { electricPowerOnOffItems }
         </Row>

@@ -35,13 +35,6 @@ class FakeNotices(Resource):
             'type': '通知',
             },
             {
-            'id': '000000002',
-            'avatar': 'https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png',
-            'title': '你推荐的 曲妮妮 已通过第三轮面试',
-            'datetime': '2017-08-08',
-            'type': '通知',
-            },
-            {
             'id': '000000003',
             'avatar': 'https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png',
             'title': '这种模板可以区分多种通知类型',
@@ -66,7 +59,7 @@ class FakeNotices(Resource):
             {
             'id': '000000006',
             'avatar': 'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-            'title': '曲丽丽 评论了你',
+            'title': '消息测试',
             'description': '描述信息描述信息描述信息',
             'datetime': '2017-08-07',
             'type': '消息',
@@ -79,28 +72,13 @@ class FakeNotices(Resource):
             'datetime': '2017-08-07',
             'type': '消息',
             },
-            {
-            'id': '000000008',
-            'avatar': 'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-            'title': '标题',
-            'description': '这种模板用于提醒谁与你发生了互动，左侧放『谁』的头像',
-            'datetime': '2017-08-07',
-            'type': '消息',
-            },
+
             {
             'id': '000000009',
             'title': '任务名称',
             'description': '任务需要在 2017-01-12 20:00 前启动',
             'extra': '未开始',
             'status': 'todo',
-            'type': '待办',
-            },
-            {
-            'id': '000000010',
-            'title': '第三方紧急代码变更',
-            'description': '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
-            'extra': '马上到期',
-            'status': 'urgent',
             'type': '待办',
             },
             {

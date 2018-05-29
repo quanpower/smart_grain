@@ -95,7 +95,3 @@ export default class GrainHistory extends Component {
   }
 }
 
-
-
-
-

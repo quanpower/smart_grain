@@ -22,7 +22,7 @@ export default {
         // console.log('pathname:', pathname)
         if (pathname.search('aircon-control') != -1) {
 
-          const match = pathToRegexp('/grain/aircon-control/:barnNo').exec(pathname)
+          const match = pathToRegexp('/aircon-control/:barnNo').exec(pathname)
           // console.log('---in graindash models---')
           // console.log('match:', match)
 

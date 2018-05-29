@@ -115,7 +115,7 @@ class BasicLayout extends React.PureComponent {
   getPageTitle() {
     const { routerData, location } = this.props;
     const { pathname } = location;
-    let title = 'Smart Link Cloud';
+    let title = 'WCY Cloud';
     let currRouterData = null;
     // match params path
     Object.keys(routerData).forEach(key => {
@@ -124,7 +124,7 @@ class BasicLayout extends React.PureComponent {
       }
     });
     if (currRouterData && currRouterData.name) {
-      title = `${currRouterData.name} - Smart Link Cloud`;
+      title = `${currRouterData.name} - WCY Cloud`;
     }
     return title;
   }
@@ -240,29 +240,29 @@ class BasicLayout extends React.PureComponent {
           </Content>
           <Footer style={{ padding: 0 }}>
             <GlobalFooter
-              links={[
-                {
-                  key: '首页',
-                  title: '智联云首页',
-                  href: 'http://www.smartlinkcloud.com',
-                  blankTarget: true,
-                },
-                {
-                  key: 'github',
-                  title: <Icon type="github" />,
-                  href: 'https://github.com/quanpower/Friday',
-                  blankTarget: true,
-                },
-                {
-                  key: 'Ant Design',
-                  title: 'Ant Design',
-                  href: 'http://ant.design',
-                  blankTarget: true,
-                },
-              ]}
+              // links={[
+              //   {
+              //     key: '首页',
+              //     title: '智联云首页',
+              //     href: 'http://www.smartlinkcloud.com',
+              //     blankTarget: true,
+              //   },
+              //   {
+              //     key: 'github',
+              //     title: <Icon type="github" />,
+              //     href: 'https://github.com/quanpower/Friday',
+              //     blankTarget: true,
+              //   },
+              //   {
+              //     key: 'Ant Design',
+              //     title: 'Ant Design',
+              //     href: 'http://ant.design',
+              //     blankTarget: true,
+              //   },
+              // ]}
               copyright={
                 <Fragment>
-                  Copyright <Icon type="copyright" /> 2018 上海数航测控技术部出品
+                  Copyright <Icon type="copyright" /> 2018 深圳维创云技术部出品
                 </Fragment>
               }
             />

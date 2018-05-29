@@ -19,21 +19,30 @@ const bodyStyle = {
 
 export default class Barns extends Component {
   state = {
-    barns: 'all',
+    alarmStatus: false,
+    showAudio: true,
+    barns: [],
   };
 
+
   componentDidMount() {
-    this.props.dispatch({
-      type: 'grain/fetchBarns',
-    });
+    const { barnNo } = this.state;
 
-    this.props.dispatch({
-      type: 'grain/fetchAlarmStatus',
-    });
+    this.timer = setInterval(() => {
 
+      this.props.dispatch({
+        type: 'grain/fetchBarns',
+      });
+
+      this.props.dispatch({
+        type: 'grain/fetchAlarmStatus',
+      });
+
+    }, 1000);
   }
 
   componentWillUnmount() {
+    clearInterval(this.timer);
     const { dispatch } = this.props;
     dispatch({
       type: 'grain/clear',
@@ -41,7 +50,6 @@ export default class Barns extends Component {
   }
 
   render() {
-    const { barns_state } = this.state;
     const { grain, loading } = this.props;
     const { barns, alarmStatus, showAudio } = grain
 

@@ -22,7 +22,7 @@ export default {
         // console.log('pathname:', pathname)
         if (pathname.search('fire-alarm') != -1) {
 
-          const match = pathToRegexp('/grain/fire-alarm/:barnNo').exec(pathname)
+          const match = pathToRegexp('/fire-alarm/:barnNo').exec(pathname)
           // console.log('---in graindash models---')
           // console.log('match:', match)
 
