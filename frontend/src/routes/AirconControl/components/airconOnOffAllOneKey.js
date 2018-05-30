@@ -40,7 +40,7 @@ function AirconOnOffAllOneKey ({ dispatch, barnNo }) {
       console.log('barnno is :', barnNo)
 
       dispatch({
-        type: 'airconcontrol/airconOnOffAllOneKey',
+        type: 'airconControl/airconOnOffAllOneKey',
         payload: {
           airconSwitch: '1',
           barnNo: barnNo,
@@ -67,7 +67,7 @@ function AirconOnOffAllOneKey ({ dispatch, barnNo }) {
       message.success('关闭成功！')
 
       dispatch({
-        type: 'airconcontrol/airconOnOffAllOneKey',
+        type: 'airconControl/airconOnOffAllOneKey',
         payload: {
           airconSwitch: '0',
           barnNo: barnNo,
@@ -91,7 +91,7 @@ function AirconOnOffAllOneKey ({ dispatch, barnNo }) {
       console.log(`delay ${value} hours to poweroff`)
 
       dispatch({
-        type: 'airconcontrol/updateBarnLoraNode',
+        type: 'airconControl/updateBarnLoraNode',
         payload: {
           timeDelta: value,
           barnNo: barnNo,

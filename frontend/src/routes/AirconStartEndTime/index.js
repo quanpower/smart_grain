@@ -13,7 +13,8 @@ import { AirconUpdateStartEndTime } from './components'
 
 export default class AirConStartEndTime extends Component {
   state = {
-    barns: 'all',
+    startTime: '08:00',
+    endTime: '18:00',
   };
 
   // componentDidMount() {
@@ -39,7 +40,6 @@ export default class AirConStartEndTime extends Component {
   
 
   render() {
-    const { barns_state } = this.state;
     const { airconStartEndTime, dispatch, loading } = this.props;
     const { startTime, endTime } = airconStartEndTime
 

@@ -105,8 +105,6 @@ function AirconUpdateOneStartEndTime ({ dispatch, nodeAddr, airconStartEndTime }
         },
       })
       message.success('启动成功！')
-
-
     },
 
     onCancel () {

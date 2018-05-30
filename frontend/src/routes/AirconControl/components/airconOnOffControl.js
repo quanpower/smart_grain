@@ -37,7 +37,7 @@ function AirconOnOffControl ({ dispatch, nodeAddr, content, name, title, avatar,
       message.success('启动成功！')
 
       dispatch({
-        type: 'airconcontrol/airconOnOff',
+        type: 'airconControl/airconOnOff',
         payload: {
           airconSwitch: '1',
           nodeAddr: nodeAddr,
@@ -64,7 +64,7 @@ function AirconOnOffControl ({ dispatch, nodeAddr, content, name, title, avatar,
       message.success('关闭成功！')
 
       dispatch({
-        type: 'airconcontrol/airconOnOff',
+        type: 'airconControl/airconOnOff',
         payload: {
           airconSwitch: '0',
           nodeAddr: nodeAddr,
@@ -87,7 +87,7 @@ function AirconOnOffControl ({ dispatch, nodeAddr, content, name, title, avatar,
       console.log(`delay ${value} hours to poweroff`)
 
       dispatch({
-        type: 'airconcontrol/updateLoraNode',
+        type: 'airconControl/updateLoraNode',
         payload: {
           timeDelta: value,
           nodeAddr: nodeAddr,
