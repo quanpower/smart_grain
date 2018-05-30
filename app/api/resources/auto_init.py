@@ -108,82 +108,82 @@ class AutoInit(Resource):
             
             lora_nodes.append(
                 LoraNode(node_addr='29', node_name='37-1', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[0], power_io=power_ios[2], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[0], power_io=power_ios[2], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='21', node_name='37-2', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[0], power_io=power_ios[2], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[0], power_io=power_ios[2], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='17', node_name='37-3', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[0], power_io=power_ios[5], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[0], power_io=power_ios[5], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='25', node_name='37-4', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[0], power_io=power_ios[5], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[0], power_io=power_ios[5], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='18', node_name='34-1', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[1], power_io=power_ios[0], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[1], power_io=power_ios[0], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='24', node_name='34-2', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[1], power_io=power_ios[0], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[1], power_io=power_ios[0], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='10', node_name='34-3', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[1], power_io=power_ios[1], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[1], power_io=power_ios[1], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='15', node_name='34-4', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[1], power_io=power_ios[1], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[1], power_io=power_ios[1], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='16', node_name='41-1', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[2], power_io=power_ios[4], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[2], power_io=power_ios[4], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='20', node_name='41-2', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[2], power_io=power_ios[4], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[2], power_io=power_ios[4], current=1.0, current_no=2, current_limit=10, auto_manual='auto',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='19', node_name='41-3', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[2], power_io=power_ios[6], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[2], power_io=power_ios[6], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='26', node_name='41-4', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[2], power_io=power_ios[6], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[2], power_io=power_ios[6], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='27', node_name='11-1', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[3], power_io=power_ios[3], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[3], power_io=power_ios[3], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='28', node_name='11-2', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[3], power_io=power_ios[3], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[3], power_io=power_ios[3], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='22', node_name='11-3', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[3], power_io=power_ios[7], current=1.0, current_no=1, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[3], power_io=power_ios[7], current=1.0, current_no=1, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
             lora_nodes.append(
                 LoraNode(node_addr='30', node_name='11-4', grain_storehouse=grain_storehouses[0], lora_gateway=lora_gateways[0],
-                         grain_barn=grain_barns[3], power_io=power_ios[7], current=1.0, current_no=2, current_limit=8, auto_manual='auto',
+                         grain_barn=grain_barns[3], power_io=power_ios[7], current=1.0, current_no=2, current_limit=10, auto_manual='manual',
                          manual_start_time=time_now, manual_end_time=time_now + datetime.timedelta(seconds=600),
                          auto_start_time=time_now, auto_end_time=time_now))
 

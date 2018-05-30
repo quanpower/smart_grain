@@ -214,7 +214,7 @@ def dynamic_link():
 
                         for user in users:
                             payload = {'user_email': user.email, 'subject': '空调高温报警!', 'user_name': user.username, 'alarm_msg': alarm_msg}
-                            requests.post("http://127.0.0.1:5000/api/v1/alarm_email", data=payload)
+                            requests.post("http://127.0.0.1:5000/api/alarm_email", data=payload)
                         alarm_status.send_alarm_datetime = time_now
 
 
@@ -276,7 +276,7 @@ def dynamic_link():
                         alarm_msg = '警告！！\n    ' + node[2] + '空调当前电流为' + str(current_value) + 'A, 可能存在安全隐患，请检修！\n\n\n' + '报警时间：' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         for user in users:
                             payload = {'user_email': user.email, 'subject': '空调用电报警!', 'user_name': user.username, 'alarm_msg': alarm_msg}
-                            requests.post("http://127.0.0.1:5000/api/v1/alarm_email", data=payload)
+                            requests.post("http://127.0.0.1:5000/api/alarm_email", data=payload)
 
                         alarm_status.send_alarm_datetime = time_now
 
