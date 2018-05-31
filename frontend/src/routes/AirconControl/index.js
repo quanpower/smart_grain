@@ -49,6 +49,10 @@ export default class AirConControl extends Component {
     console.log(this.state)
     const { barnNo } = this.state;
 
+    this.props.dispatch({ 
+        type: 'airconControl/fetchBarnsOptions',
+      })
+
     this.timer = setInterval(() => {
 
       this.props.dispatch({ 
@@ -74,20 +78,20 @@ export default class AirConControl extends Component {
     console.log(airConControlItems)
 
 
-    // const cascaderProps = {
+    const cascaderProps = {
 
-    //   size: 'large',
-    //   defaultValue: ['1', '1'],
-    //   options: barnsOptions,
+      size: 'large',
+      defaultValue: ['1', '1'],
+      options: barnsOptions,
 
-    //   onChange (value) {
-    //     console.log('------select value is:--------')
-    //     console.log(value)
-    //     const barn_no = value[1]
-    //     dispatch(routerRedux.push(`/aircon_control/${barn_no}`))
+      onChange (value) {
+        console.log('------select value is:--------')
+        console.log(value)
+        const barn_no = value[1]
+        dispatch(routerRedux.push(`/aircon-control/${barn_no}`))
 
-    //   }
-    // }
+      }
+    }
 
 
     // const filterProps = {
@@ -135,6 +139,10 @@ export default class AirConControl extends Component {
 
     return (
       <Fragment>
+        <Card bordered={false} bodyStyle={{ padding: '24px 36px 24px 0', }}>
+          <Cascader {...cascaderProps} />
+
+        </Card>
 
         <AirconControlManual dispatch={dispatch} location={location} barnNo={barnNo} airConControlItems={airConControlItems} />
 

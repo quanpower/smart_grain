@@ -36,9 +36,9 @@ export default {
             },
           })
 
-          // dispatch({
-          //   type: 'fetchBarnsOptions',
-          // })
+          dispatch({
+            type: 'fetchBarnsOptions',
+          })
 
           dispatch({ 
             type: 'fetchElectricPowerItems',
@@ -76,14 +76,11 @@ export default {
     },
 
     * fetchBarnsOptions ({}, { select, call, put }) {
-      const user = yield select(state => state.app.user)
-      console.log('************fireAlarm user*************:', user)
       const payload = {
-        userID: user.id,
-        username: user.username,
+        userID: 1,
+        username: 'username',
       }
-      const { list } = yield call(getAllBarns, payload)
-      const barnsOptions = list
+      const barnsOptions= yield call(getAllBarns, payload)
       console.log('-----barnsOptions is------ :', barnsOptions)
       yield put({
         type: 'save',

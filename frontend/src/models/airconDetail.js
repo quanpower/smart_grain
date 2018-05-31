@@ -61,9 +61,9 @@ export default {
             },
           })
 
-          // dispatch({
-          //   type: 'fetchBarnsOptions',
-          // })
+          dispatch({
+            type: 'fetchBarnsNodesOptions',
+          })
 
           dispatch({ 
             type: 'fetchAirConRealtimeTemp',
@@ -124,8 +124,7 @@ export default {
 
 
     * fetchBarnsNodesOptions ({ }, { call, put }) {
-      const { list } = yield call(getAllNodes)
-      const barnsNodesOptions = list
+      const barnsNodesOptions = yield call(getAllNodes)
       console.log('-----barnsNodesOptions is------ :', barnsNodesOptions)
       yield put({
         type: 'save',

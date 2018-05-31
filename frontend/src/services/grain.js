@@ -13,8 +13,11 @@ export async function getAlarmStatus () {
 }
 
 
-export async function getAllBarns () {
-  return request('/api/all_barns');
+export async function getAllBarns (params) {
+  return request('/api/all_barns', {
+    method: 'POST',
+    body: params,
+  });
 }
 
 

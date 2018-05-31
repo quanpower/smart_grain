@@ -318,7 +318,7 @@ class AutoInit(Resource):
 
         try:
             alarm_level_setting = list()
-            alarm_level_setting.append(AlarmLevelSetting(warning=40, error=50))
+            alarm_level_setting.append(AlarmLevelSetting(warning=57, error=68))
 
             db.session.add(alarm_level_setting[0])
 

@@ -333,17 +333,17 @@ class AllBarns(Resource):
         for i in range(len(barns)):
             barn=barns[i]
             print('---------------barn--------------', barn)
-            user_owned_barns = db.session.query(User.owned_barns).filter(User.id == userID).all()
-            user_owned_barns_text = user_owned_barns[0][0]
-            print(user_owned_barns_text)
-            user_owned_barns_list = user_owned_barns_text.split(',')
-            print(user_owned_barns_list)
+            # user_owned_barns = db.session.query(User.owned_barns).filter(User.id == userID).all()
+            # user_owned_barns_text = user_owned_barns[0][0]
+            # print(user_owned_barns_text)
+            # user_owned_barns_list = user_owned_barns_text.split(',')
+            # print(user_owned_barns_list)
             
-            if barn[0] in user_owned_barns_list:
-                disabled = False
-            else:
-                disabled = True
-
+            # if barn[0] in user_owned_barns_list:
+            #     disabled = False
+            # else:
+            #     disabled = True
+            disabled = False
             barn_value_label = {'value':barn[0], 'label':barn[1] ,'disabled':disabled}
             barn_children.append(barn_value_label)
         storehouse_value_lable['children'] = barn_children
@@ -693,7 +693,7 @@ class AirConControlItems(Resource):
             airconcontrol_item['content'] = node[1] + '号空调开关控制'
             airconcontrol_item['name'] = node[1]
             airconcontrol_item['title '] = node[1] + '号空调'
-            airconcontrol_item['avatar'] =  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1506181543644&di=36ab98904965175769fb54fbd316cbe1&imgtype=0&src=http%3A%2F%2Fimg003.21cnimg.com%2Fphotos%2Falbum%2F20150207%2Fm600%2F562A7CBD05C2B187842FC10B831015B0.jpeg'
+            airconcontrol_item['avatar'] =  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504847335593&di=d7fd8e71543f9b99f12f614718757a0e&imgtype=0&src=http%3A%2F%2Fc1.neweggimages.com.cn%2FNeweggPic2%2Fneg%2FP800%2FA16-184-4PU.jpg'
             # judge if air-condiontioner is working?
             if node[2] >= 0.5:
                 node_status = {'color':'green', 'text':'运行中', 'current_value':node[2]}

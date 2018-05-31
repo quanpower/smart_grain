@@ -19,7 +19,7 @@ const bodyStyle = {
 
 @connect(({ airconDetail, loading }) => ({
   airconDetail,
-  loading: loading.effects['airconDetail/fetchBarns'],
+  loading: loading.effects['airconDetail/fetchBarnsNodesOptions'],
 }))
 
 
@@ -57,6 +57,10 @@ export default class AirConDetail extends Component {
   componentDidMount() {
     console.log(this.state)
 
+    this.props.dispatch({ 
+        type: 'airconDetail/fetchBarnsNodesOptions',
+      })
+
     this.timer = setInterval(() => {
 
       this.props.dispatch({ 
@@ -86,12 +90,12 @@ export default class AirConDetail extends Component {
 
     console.log('----barnsNodesOptions is:------', options)
 
-  //   function onChange (value) {
-  //     console.log('------select value is:--------')
-  //     console.log(value)
-  //     const nodeAddr = value[2]
-  //   dispatch(routerRedux.push(`/airconDetail/${nodeAddr}`))
-  // }
+    function onChange (value) {
+      console.log('------select value is:--------')
+      console.log(value)
+      const nodeAddr = value[2]
+      dispatch(routerRedux.push(`/aircon-detail/${nodeAddr}`))
+    }
 
     const concCards = airConRealtimeTemp.map((item, key) => (<Col key={key} lg={6} md={12}>
     <AirConRealtimeTemp {...item} />
@@ -100,6 +104,16 @@ export default class AirConDetail extends Component {
     return (
       <Fragment>
         <Row gutter={24}>
+
+        <Col lg={24} md={24}>
+          <Card bordered={false}
+            bodyStyle={{
+              padding: '24px 36px 24px 0',
+            }}
+          >
+            <Cascader size="large" defaultValue={['1', '1', '29']} options={options} onChange={onChange} />
+          </Card>
+        </Col>
 
         {concCards}
 

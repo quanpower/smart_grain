@@ -38,7 +38,7 @@ export default class Barns extends Component {
         type: 'grain/fetchAlarmStatus',
       });
 
-    }, 1000);
+    }, 10000);
   }
 
   componentWillUnmount() {

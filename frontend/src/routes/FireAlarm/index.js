@@ -30,47 +30,41 @@ export default class FireAlarm extends Component {
     switch: [],
   };
 
-  // componentDidMount() {
-  //   this.props.dispatch({
-  //     type: 'fireAlarm/fetchBarns',
-  //   });
+  componentDidMount() {
+    this.props.dispatch({ 
+        type: 'fireAlarm/fetchBarnsOptions',
+      })
 
-  //   this.props.dispatch({
-  //     type: 'fireAlarm/fetchAlarmStatus',
-  //   });
+    console.log('component did mount!')
+  }
 
-
-  //   console.log('component did mount!')
-  // }
-
-  // componentWillUnmount() {
-  //   const { dispatch } = this.props;
-  //   dispatch({
-  //     type: 'fireAlarm/clear',
-  //   });
-  // }
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'fireAlarm/clear',
+    });
+  }
 
 
   render() {
-    const { barns_state } = this.state;
     const { fireAlarm, dispatch, loading } = this.props;
     const { electricPowerItems, barnsOptions, barnNo } = fireAlarm
 
     console.log('electricPowerItems:', electricPowerItems)
 
-  // const cascaderProps = {
+  const cascaderProps = {
 
-  //   size: 'large',
-  //   defaultValue: ['1', '1'],
-  //   options: barnsOptions,
+    size: 'large',
+    defaultValue: ['1', '1'],
+    options: barnsOptions,
 
-  //   onChange (value) {
-  //     console.log('------select value is:--------')
-  //     console.log(value)
-  //     const barn_no = value[1]
-  //     dispatch(routerRedux.push(`/fire-alarm/${barn_no}`))
-  //   }
-  // }
+    onChange (value) {
+      console.log('------select value is:--------')
+      console.log(value)
+      const barn_no = value[1]
+      dispatch(routerRedux.push(`/fire-alarm/${barn_no}`))
+    }
+  }
 
 
   const electricPowerOnOffItems = electricPowerItems.map((item, key) => (
@@ -96,6 +90,9 @@ export default class FireAlarm extends Component {
     return (
       <Fragment>
         <Row gutter={24}>
+          <Card bordered={false} bodyStyle={{ padding: '24px 36px 24px 0', }}>
+            <Cascader {...cascaderProps} />
+          </Card>
 
           { electricPowerOnOffItems }
         </Row>

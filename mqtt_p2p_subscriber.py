@@ -257,6 +257,8 @@ def lora_unpacking_ack(packet_data):
     # todo
     print(3 * '\n')
 
+    print(packet_data)
+
     print('''***************************************************\n
         **-------- ack data process beginning -----------**\n
         ***************************************************''')

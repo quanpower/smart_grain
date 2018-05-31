@@ -32,6 +32,10 @@ export default class GrainDash extends Component {
     console.log(this.state)
     const { barnNo } = this.state;
 
+    this.props.dispatch({ 
+        type: 'grainDash/fetchBarnsOptions',
+      })
+
     this.timer = setInterval(() => {
 
       this.props.dispatch({ 
@@ -100,21 +104,23 @@ export default class GrainDash extends Component {
 
     console.log('----airConDash is----:', airConDash)
 
+    console.log('----barnsOptions is----:', barnsOptions)
+
     console.log('--****-airconBlockItems is: ---****--', airconBlockItems)
 
-    // const cascaderProps = {
+    const cascaderProps = {
 
-    //   size: 'large',
-    //   defaultValue: ['1', '1'],
-    //   options: barnsOptions,
+      size: 'large',
+      defaultValue: ['1', '1'],
+      options: barnsOptions,
 
-    //   onChange (value) {
-    //     console.log('------select value is:--------')
-    //     console.log(value)
-    //     const barn_no = value[1]
-    //     dispatch(routerRedux.push(`/grain-dash/${barn_no}`))
-    //   }
-    // }
+      onChange (value) {
+        console.log('------select value is:--------')
+        console.log(value)
+        const barn_no = value[1]
+        dispatch(routerRedux.push(`/grain-dash/${barn_no}`))
+      }
+    }
 
 
     const itemsCards = airconBlockItems.map((item, key) => (
@@ -125,6 +131,9 @@ export default class GrainDash extends Component {
       <Fragment>
         <Row gutter={24}>
         <Col lg={12} md={24}>
+          <Card bordered={false} bodyStyle={{ padding: '24px 36px 24px 0', }}>
+            <Cascader {...cascaderProps} />
+          </Card>
 
           <Card bordered={false}
                 bodyStyle={{
